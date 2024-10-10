@@ -600,12 +600,12 @@
             </aside>
 
             <main class="p-4 md:ml-64 h-auto pt-20">
-                <div class="py-12">
+                <div class="py-4">
                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 min-h-screen">
-                        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="bg-white dark:bg-gray-800 dark:text-gray-300 overflow-hidden shadow-sm sm:rounded-lg">
 
                                 {{ $slot }}
-                            
+
                         </div>
                     </div>
                 </div>
