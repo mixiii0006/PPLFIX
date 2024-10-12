@@ -56,6 +56,14 @@
                                     >
                                         Log in
                                     </a>
+                                    @if (Route::has('register'))
+                                    <a
+                                        href="{{ route('register') }}"
+                                        class="rounded-md px-3 py-2 text-primary fw-bold ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                    >
+                                        Register
+                                    </a>
+                                @endif
 
 
                                 @endauth
@@ -80,7 +88,8 @@
                                                 <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="{{ url('/dashboard') }}"> Dashboard</a>
 
                                                 @else
-                                                <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="{{ url('/login') }}"> Log in</a>
+                                                <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="{{ url('/register') }}"> Sign In</a>
+                                                <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="{{ url('/login') }}">Log In</a>
                                                 @endif
                                             @endauth
 

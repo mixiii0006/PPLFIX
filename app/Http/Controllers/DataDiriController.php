@@ -12,4 +12,7 @@ class DataDiriController extends Controller
         $datas = User::all();
         return view('data-diri.index', compact('datas'));
     }
+
+    
 }
+

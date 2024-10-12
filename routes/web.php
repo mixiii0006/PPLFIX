@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard', ['role' =>Auth::user()->role]);
-})->middleware(['auth', 'roles:admin,user'])->name('dashboard');
+})->middleware(['auth', 'roles:admin,user,'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

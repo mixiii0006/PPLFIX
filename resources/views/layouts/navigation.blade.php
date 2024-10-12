@@ -619,6 +619,18 @@
               >name@flowbite.com</span
             >
           </div>
+
+          {{-- @foreach ($datas as $data)
+        <div class="py-3 px-4">
+            <span class="block text-sm font-semibold text-gray-900 dark:text-white">
+                {{ $data->name }}
+            </span>
+            <span class="block text-sm text-gray-900 truncate dark:text-white">
+                {{ $data->email }}
+            </span>
+        </div>
+        @endforeach --}}
+
           <ul
             class="py-1 text-gray-700 dark:text-gray-300"
             aria-labelledby="dropdown"
