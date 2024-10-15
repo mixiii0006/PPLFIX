@@ -21,6 +21,8 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('roles:admin')->group(function () {
     Route::resource('data-diri', DataDiriController::class);
+    Route::get('/User/{datas}/edit', [DataDiriController::class, 'edit'])->name('edit');
+    Route::put('/User/{datas}', [DataDiriController::class, 'update'])->name('update');
 });
 
 require __DIR__.'/auth.php';
