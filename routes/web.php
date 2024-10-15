@@ -21,8 +21,12 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('roles:admin')->group(function () {
     Route::resource('data-diri', DataDiriController::class);
-    Route::get('/User/{datas}/edit', [DataDiriController::class, 'edit'])->name('edit');
-    Route::put('/User/{datas}', [DataDiriController::class, 'update'])->name('update');
+    Route::get('/create', [DataDiriController::class, 'create'])->name('data-diri.create');
+    Route::post('/User/store', [DataDiriController::class, 'store'])->name('data-diri.store');
+    Route::get('/User/{datas}/edit', [DataDiriController::class, 'edit'])->name('data-diri.edit');
+    Route::put('/User/{datas}/update', [DataDiriController::class, 'update'])->name('data-diri.update');
+    Route::get('/User/{datas}/delete', [DataDiriController::class, 'delete'])->name('data-diri.delete');
+    Route::delete('/User/{datas}/destroy', [DataDiriController::class, 'destroy'])->name('data-diri.destroy');
 });
 
 require __DIR__.'/auth.php';
