@@ -108,19 +108,17 @@
                                         </li>
                                     </ul>
                                     <div class="" >
-                                        <form action="{{ route('data-diri.destroy', $data->id) }}" method="POST" >
-                                            @csrf
-                                            @method('DELETE')
-                                            <button id='{{$data->id}}-delete' type="submit" class="block py-2 text-end px-16  text-gray-700 hover:bg-red-600 dark:hover:bg-red-600 rounded-sm dark:text-gray-200 dark:hover:text-white">
+                                            <button id='{{$data->id}}-deleteButton'  data-modal-target="{{$data->id}}-deleteModal" data-modal-toggle="{{$data->id}}-deleteModal"  type="button" class="block py-2 text-end px-16  text-gray-700 hover:bg-red-600 dark:hover:bg-red-600 rounded-sm dark:text-gray-200 dark:hover:text-white">
                                                  Delete
                                             </button>
-                                        </form>
 
                                         {{-- <a id="{{$data->id}}-hapus" href="{{ route('data-diri.delete', $data->id) }}" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
                                     </div> --}}
                                 </div>
                             </td>
                         </tr>
+                        <x-hapus :id="$data->id" :route="route('data-diri.destroy', $data->id)"/>
+
                         @endforeach
 
                     </tbody>

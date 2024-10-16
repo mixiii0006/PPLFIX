@@ -629,6 +629,8 @@
                     </div>
                 </div>
             </main>
+@stack('modals')
           </div>
+@stack('scripts')
     </body>
 </html>

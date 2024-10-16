@@ -36,9 +36,9 @@ class DataDiriController extends Controller
         return redirect()->route('index')->with('success', 'Data created successfully!');
     }
 
-    public function edit(User $datas)
+    public function edit($id)
     {
-
+        $datas = User::find($id);
         return view('data-diri.edit', compact('datas'));
     }
     public function update(Request $request, string $id)
@@ -46,7 +46,7 @@ class DataDiriController extends Controller
         // $data_for_update = User::findOrFail($id);
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|string|email|unique:users,email,' . $id,
+            'email'=>'required|string|email|unique:users,email,' . $id,
             'role' => 'required|in:admin,user,writer',
 
         ]);
@@ -60,10 +60,9 @@ class DataDiriController extends Controller
 
         return view('data-diri.hapus', compact('datas'));
     }
-    public function destroy(User $datas){
-
+    public function destroy($id){
+        $datas = User::findorfail($id);
         $datas->delete();
-
         return redirect('/data-diri')->with('success', 'Berhasil Dihapus');
     }
 }
