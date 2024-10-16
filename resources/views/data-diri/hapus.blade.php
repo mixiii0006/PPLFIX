@@ -1,14 +1,13 @@
 <x-app-layout>
+
     {{-- @foreach ($datas as $data) --}}
     {{-- @include('data-diri.index', ['id' => $datas->id . '-hapus']) --}}
-
-
+    {{-- <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+    @yield('index') --}}
     <!-- Modal toggle -->
-{{-- <div class="flex justify-center m-5">
-    <button id="deleteButton" data-modal-target="deleteModal" data-modal-toggle="deleteModal" class="block text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="button">
-    Show delete confirmation
-    </button>
-</div> --}}
+<div class="flex justify-center m-5">
+    {{-- @yield('index') --}}
+</div>
 
 <!-- Main modal -->
 <div id="deleteModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
@@ -33,10 +32,11 @@
     </div>
 </div>
 
+    {{-- </section> --}}
 {{-- @endforeach --}}
 <script>
     document.addEventListener("DOMContentLoaded", function(event) {
-  document.getElementById('id' ).click();
+  document.getElementById('{{$data->id}}-delete' ).click();
 });
 </script>
 </x-app-layout>

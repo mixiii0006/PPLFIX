@@ -43,6 +43,7 @@ class DataDiriController extends Controller
     }
     public function update(Request $request, string $id)
     {
+        // $data_for_update = User::findOrFail($id);
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users,email,' . $id,
@@ -51,7 +52,7 @@ class DataDiriController extends Controller
         ]);
         $datas = User::find($id);
         $datas->update($request->all());
-        return redirect('/data-diri')->with('success', 'Berhasil Dihapus');
+        return redirect(route('data-diri.index'))->with('success', 'Berhasil Dihapus');
     }
 
     public function delete(User $datas)

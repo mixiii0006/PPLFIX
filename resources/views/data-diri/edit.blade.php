@@ -1,6 +1,8 @@
 <x-app-layout>
     {{-- @include('data-diri.index') --}}
 
+    {{-- @yield('index') --}}
+
     <!-- Modal toggle -->
 {{-- <div class="flex justify-center m-5">
     <button id="updateProductButton" data-modal-target="updateProductModal" data-modal-toggle="updateProductModal" class="block text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="button">
@@ -13,8 +15,11 @@
             <!-- Modal body -->
             <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
             <form action="{{ route('data-diri.update', $datas->id) }}" method="POST">
-                @method('PUT')
                 @csrf
+                @method('PUT')
+                <div class=" text-center mb-8 lg:mb-8">
+                    <h2 class="mb-2 mt-4 text-3xl tracking-tight font-bold text-blue-500 dark:text-blue-500">Edit Data</h2>
+                </div>
                 <div class="grid gap-4 mb-7 sm:grid-cols-1">
                     <div>
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
@@ -25,6 +30,7 @@
                         <input type="text" name="brand" id="brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ old('email', $datas->email) }}" required="">
 
                     </div>
+
                     <div>
                         <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
                         <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -40,7 +46,7 @@
                     </div> --}}
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border border-blue-500 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                    <button id='{{$datas->id}}-update' type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border border-blue-500 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                         Update product
                     </button>
                     {{-- <form action="{{ route('data-diri.destroy', $datas->id) }}" method="POST">
