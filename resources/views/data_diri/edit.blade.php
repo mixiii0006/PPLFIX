@@ -1,20 +1,11 @@
 <x-app-layout>
-    {{-- @include('data-diri.index') --}}
+    {{-- @props(['id','route']) --}}
 
-    {{-- @yield('index') --}}
 
-    <!-- Modal toggle -->
-{{-- <div class="flex justify-center m-5">
-    <button id="updateProductButton" data-modal-target="updateProductModal" data-modal-toggle="updateProductModal" class="block text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" type="button">
-    Update product
-    </button>
-</div> --}}
-{{-- <section  class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5"> --}}
-
-    <div class="bg-white dark:bg-gray-800 dark:text-gray-300 overflow-hidden shadow-sm sm:rounded-lg">
+    <div id= "{{$datas->id}}-updateModal" class="bg-white dark:bg-gray-800 dark:text-gray-300 overflow-hidden shadow-sm sm:rounded-lg">
             <!-- Modal body -->
             <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
-            <form action="{{ route('data-diri.update', $datas->id) }}" method="POST">
+            <form action="{{ route('data_diri.update', $datas->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class=" text-center mb-8 lg:mb-8">
@@ -63,14 +54,14 @@
         </div>
 
     </div>
-{{-- </section> --}}
-{{-- <script>
+
+
 <script>
   document.addEventListener("DOMContentLoaded", function(event) {
-  document.getElementById('{{$datas->id}}-update').click();
+  document.getElementById('{{$datas->id}}-editButton').click();
   });
 </script>
-</script> --}}
+
 
 </x-app-layout>
 

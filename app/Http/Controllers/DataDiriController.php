@@ -10,7 +10,7 @@ class DataDiriController extends Controller
     public function index()
     {
         $datas = User::all();
-        return view('data-diri.index', compact('datas'));
+        return view('data_diri.index', compact('datas'));
     }
 
     public function create()
@@ -38,9 +38,10 @@ class DataDiriController extends Controller
 
     public function edit($id)
     {
-        $datas = User::find($id);
-        return view('data-diri.edit', compact('datas'));
+        $datas = User::findOrFail($id);
+        return view('data_diri.edit', compact('datas'));
     }
+
     public function update(Request $request, string $id)
     {
         // $data_for_update = User::findOrFail($id);
@@ -52,18 +53,18 @@ class DataDiriController extends Controller
         ]);
         $datas = User::find($id);
         $datas->update($request->all());
-        return redirect(route('data-diri.index'))->with('success', 'Berhasil Dihapus');
+        return redirect(route('data_diri.index'))->with('success', 'Berhasil Dihapus');
     }
 
     public function delete(User $datas)
     {
 
-        return view('data-diri.hapus', compact('datas'));
+        return view('data_diri.hapus', compact('datas'));
     }
     public function destroy($id){
         $datas = User::findorfail($id);
         $datas->delete();
-        return redirect('/data-diri')->with('success', 'Berhasil Dihapus');
+        return redirect('/data_diri')->with('success', 'Berhasil Dihapus');
     }
 }
 

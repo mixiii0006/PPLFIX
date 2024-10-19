@@ -104,13 +104,10 @@
                                                 <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show</a>
                                             </li>
                                             <li>
-                                                {{-- <a  id='{{$data->id}}-editButton' href="{{ route('data_diri.edit', $data->id) }}" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a> --}}
-                                                <button id='{{$data->id}}-editButton' data-modal-target="{{ $data->id}}-updateModal" data-modal-toggle="{{ $data->id}}-updateModal"    type="button" class="block text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800" >
-                                                    Edit
-                                                    </button>
+                                                <a  id='{{$data->id}}-editButton' href="{{ route('data_diri.edit', $data->id) }}" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
+
                                             </li>
                                         </ul>
-
                                         <div class="" >
                                                 <button id='{{$data->id}}-deleteButton'  data-modal-target="{{$data->id}}-deleteModal" data-modal-toggle="{{$data->id}}-deleteModal"  type="button" class="block py-2 text-end px-16  text-gray-700 hover:bg-red-600 dark:hover:bg-red-600 rounded-sm dark:text-gray-200 dark:hover:text-white">
                                                      Delete
@@ -120,10 +117,8 @@
                                     </div>
                                 </td>
                             </tr>
-                            <x-hapus :id="$data->id" :route="route('data_diri.destroy', $data->id)"/>
-
-
-                            {{-- <x-data_diri-edit :id="$data->id" :route="route('data_diri.edit', $data->id)"/> --}}
+                            <x-hapus :id="$data->id" :route="route('data_mk.destroy', $data->id)"/>
+                            <data_mk-edit :id="$data->id" :route="route('data_mk.edit', $data->id)"/>
                             @endforeach
 
                         </tbody>
@@ -172,7 +167,6 @@
                 </nav>
             </div>
 
-        {{-- </div> --}}
         </section>
-        {{-- @endsection --}}
+
     </x-app-layout>

@@ -1,4 +1,5 @@
 <x-app-layout>
+
 {{-- @section('index') --}}
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
 
@@ -104,20 +105,23 @@
                                             <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show</a>
                                         </li>
                                         <li>
-                                            <a  id='{{$data->id}}-edit' href="{{ route('data-diri.edit', $data->id) }}" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
+                                            <a  id='{{$data->id}}-editButton' href="{{ route('data_diri.edit', $data->id) }}" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
+                                            {{-- <button id='{{$data->id}}-editButton' data-modal-target="{{ $data->id}}-updateModal" data-modal-toggle="{{ $data->id}}-updateModal"    type="button" class="block py-2 text-end px-16  text-gray-700 hover:bg-blue-600 dark:hover:bg-blue-600 rounded-sm dark:text-gray-200 dark:hover:text-white">
+                                                Edit
+                                           </button> --}}
                                         </li>
                                     </ul>
+
                                     <div class="" >
                                             <button id='{{$data->id}}-deleteButton'  data-modal-target="{{$data->id}}-deleteModal" data-modal-toggle="{{$data->id}}-deleteModal"  type="button" class="block py-2 text-end px-16  text-gray-700 hover:bg-red-600 dark:hover:bg-red-600 rounded-sm dark:text-gray-200 dark:hover:text-white">
                                                  Delete
                                             </button>
-
-                                       
-                                </div>
+                                    </div>
                             </td>
                         </tr>
-                        <x-hapus :id="$data->id" :route="route('data-diri.destroy', $data->id)"/>
+                        <x-hapus :id="$data->id" :route="route('data_diri.destroy', $data->id)"/>
 
+                        {{-- <data_diri-edit :id="$data->id" :route="route('data_diri.edit', $data->id)"/> --}}
                         @endforeach
 
                     </tbody>

@@ -16,9 +16,7 @@ return new class extends Migration
             $table->string('nama ruangan');
             $table->string('kapasitas');
             $table->string('kode ruangan');
-            $table->string('lantai');
-            $table->string('gedung');
-            $table->string('status');
+            $table->string('Sesi');
             $table->timestamps();
 
         });

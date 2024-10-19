@@ -57,7 +57,7 @@
                 <ul class="space-y-2">
                   <li>
                     <a
-                      href="#"
+                      href="{{ route('dashboard') }}"
                       class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                     >
                       <svg
@@ -115,7 +115,7 @@
                       @if(Auth::user()->role=='admin')
                       <li>
                         <a
-                          href="#"
+                          href="{{ route('data_diri.index') }}"
                           class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                           >Data Pengguna</a
                         >
@@ -127,14 +127,14 @@
                       @if(Auth::user()->role=='admin'|| Auth::user()->role == 'writer')
                       <li>
                         <a
-                          href="#"
+                          href=""
                           class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                           >Data Ruangan</a
                         >
                       </li>
                       <li>
                         <a
-                          href="#"
+                          href=""
                           class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                           >Data Mata Kuliah</a
                         >
@@ -146,7 +146,7 @@
                       @if(Auth::user()->role=='admin'|| Auth::user()->role == 'writer' ||Auth::user()-> role == 'user')
                       <li>
                         <a
-                          href="#"
+                          href=""
                           class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                           >Jadwal Ruangan</a
                         >

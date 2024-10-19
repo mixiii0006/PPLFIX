@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('roles:admin')->group(function () {
-    Route::resource('data-diri', DataDiriController::class);
+    Route::resource('data_diri', DataDiriController::class);
 });
 
 require __DIR__.'/auth.php';
