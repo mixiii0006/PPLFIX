@@ -15,11 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('mata kuliah');
             $table->string('dosen');
-            $table->string('Waktu masuk');
-            $table->string('Waktu keluar');
-            $table->string('sks');
-            $table->string('prodi');
-            $table->string('semester');
+            $table->string('tingkat');
             $table->timestamps();
         });
     }
