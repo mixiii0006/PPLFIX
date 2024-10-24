@@ -12,7 +12,7 @@
                         <label for="simple-search" class="sr-only">Search</label>
                         <div class="relative w-full">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                                 </svg>
                             </div>
@@ -57,24 +57,23 @@
                             <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">Roles</h6>
                             <ul class="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
                                 <li class="flex items-center">
-                                    <input id="{{ Auth::user()->role =='admin'}}" type="checkbox" value="{{ Auth::user()->role =='admin'}}" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                    <label for="apple" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Admin</label>
+                                    <input id="filter-admin" type="checkbox" value="admin" class="role-filter w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    <label for="filter-admin" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Admin</label>
                                 </li>
                                 <li class="flex items-center">
-                                    <input id="{{ Auth::user()->role =='operator'}}" type="checkbox" value="{{ Auth::user()->role =='operator'}}" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                    <label for="fitbit" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Operator</label>
+                                    <input id="filter-operator" type="checkbox" value="operator" class="role-filter w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    <label for="filter-operator" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Operator</label>
                                 </li>
                                 <li class="flex items-center">
-                                    <input id="{{ Auth::user()->role =='user'}}" type="checkbox" value="{{ Auth::user()->role =='user'}}" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                                    <label for="razor" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">User</label>
+                                    <input id="filter-user" type="checkbox" value="user" class="role-filter w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                    <label for="filter-user" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">User </label>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="overflow-x-auto">
+            <div  class="overflow-x-auto">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -87,7 +86,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="data-container">
                         @foreach ($datas as $data)
                         <tr class="border-b dark:border-gray-700">
                             <td class="px-4 py-3">{{ $data->name}}</td>
@@ -171,6 +170,45 @@
         </div>
 
     {{-- </div> --}}
+
+    <script>
+        // Fungsi untuk memfilter data berdasarkan input pencarian
+        function searchData() {
+            const searchInput = document.getElementById('simple-search').value.toLowerCase();
+            const dataContainer = document.getElementById('data-container');
+            const rows = dataContainer.getElementsByTagName('tr');
+
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                let found = false;
+
+                for (let j = 0; j < cells.length; j++) {
+                    if (cells[j]) {
+                        const cellText = cells[j].textContent || cells[j].innerText;
+                        if (cellText.toLowerCase().includes(searchInput)) {
+                            found = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (found) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        }
+
+        // Tambahkan event listener pada input pencarian
+        document.getElementById('simple-search').addEventListener('input', searchData);
+
+        // Panggil fungsi searchData secara otomatis saat halaman dimuat
+        searchData();
+
+        
+    </script>
     </section>
+
     {{-- @endsection --}}
 </x-app-layout>
