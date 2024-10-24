@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('ruangans', function (Blueprint $table) {
             $table->id();
-            $table->string('nama ruangan');
-            $table->string('kapasitas');
-            $table->string('kode ruangan');
-            $table->string('Sesi');
+            $table->string('nama_ruangan', 100); // Nama ruangan
+            $table->integer('kapasitas')->default(0); // Kapasitas maksimal ruangan
+            $table->string('fasilitas', 255); 
             $table->timestamps();
-
         });
     }
 
