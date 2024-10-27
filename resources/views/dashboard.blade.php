@@ -7,9 +7,9 @@
                 </div>
                 <div class="space-y-8 lg:space-y-0 lg:grid lg:grid-cols-4 gap-6 xl:gap-10">
                     @auth
-                    @if($role == 'admin' || $role == 'writer' || $role == 'user')
+                    @if($role == 'admin' || $role == 'operator' || $role == 'user')
                     <!-- Pricing Card -->
-                    <div class="flex flex-col p-6 text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow-lg shadow-gray-500/50  dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white h-full">
+                    <div class="flex flex-col p-6 text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow-lg shadow-gray-500/50    dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white h-full">
                         <h3 class="mb-4 text-2xl font-medium ">Jadwal Ruangan</h3>
                           <div class="flex-grow flex justify-center items-center my-8">
                             <svg class="w-[70px] h-[70px] text-gray-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
@@ -23,7 +23,7 @@
                     @endauth
 
                     @auth
-                    @if($role == 'admin' || $role == 'writer' )
+                    @if($role == 'admin' || $role == 'operator' )
                     <!-- Pricing Card -->
                     <div class="flex flex-col p-6 text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow-lg shadow-gray-500/50  dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white h-full">
                         <h3 class="mb-4 text-2xl font-medium">Data Ruangan</h3>
@@ -38,7 +38,30 @@
                     </div>
                     <!-- Pricing Card -->
                     <div class="flex flex-col p-6 text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow-lg shadow-gray-500/50  dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white h-full">
-                        <h3 class="mb-4 text-2xl font-medium">Mata Kuliah</h3>
+                        <h3 class="mb-4 text-2xl font-medium">Pemetaan MK</h3>
+                          <div class="flex-grow flex justify-center items-center my-8">
+                            <svg class="w-[70px] h-[70px] text-gray-500  dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M8 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1h2a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2Zm6 1h-4v2H9a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2h-1V4Zm-3 8a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-2-1a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H9Zm2 5a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-2-1a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H9Z" clip-rule="evenodd"/>
+                              </svg>
+                        </div>
+
+                        <a href="#" class="text-blue-500 dark:text-blue-500 border border-blue-500 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center
+                         dark:focus:ring-primary-900">Get started</a>
+                    </div>
+                    <div class="flex flex-col p-6 text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow-lg shadow-gray-500/50  dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white h-full">
+                        <h3 class="mb-4 text-2xl font-medium">Mata kuliah</h3>
+                        <div class="flex-grow flex justify-center items-center my-8">
+                            <svg class="w-[70px] h-[70px] text-gray-500 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M8 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1h2a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2Zm6 1h-4v2H9a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2h-1V4Zm-3 8a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-2-1a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H9Zm2 5a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-2-1a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H9Z" clip-rule="evenodd"/>
+                              </svg>
+                        </div>
+
+                        <a href="#" class="text-blue-500 dark:text-blue-500 border border-blue-500 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center
+                         dark:focus:ring-primary-900">Get started</a>
+                    </div>
+                    <!-- Pricing Card -->
+                    <div class="flex flex-col p-6 text-center text-gray-900 bg-white rounded-lg border border-gray-100 shadow-lg shadow-gray-500/50  dark:border-gray-600 xl:p-8 dark:bg-gray-800 dark:text-white h-full">
+                        <h3 class="mb-4 text-2xl font-medium">Data Dosen</h3>
                           <div class="flex-grow flex justify-center items-center my-8">
                             <svg class="w-[70px] h-[70px] text-gray-500  dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd" d="M8 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1h2a2 2 0 0 1 2 2v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2Zm6 1h-4v2H9a1 1 0 0 0 0 2h6a1 1 0 1 0 0-2h-1V4Zm-3 8a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-2-1a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H9Zm2 5a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1Zm-2-1a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2H9Z" clip-rule="evenodd"/>
@@ -65,6 +88,9 @@
 
                         <a href="{{ route('data_diri.index') }}" class="text-blue-500 dark:text-blue-500 border border-blue-500 bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900">Get started</a>
                     </div>
+                    <!-- Pricing Card -->
+
+
                     @endif
                     @endauth
 

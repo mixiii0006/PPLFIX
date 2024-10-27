@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DataDiriController;
+use App\Http\Controllers\DosenController;
 use illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -11,7 +12,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard', ['role' =>Auth::user()->role]);
-})->middleware(['auth', 'roles:admin,user,writer'])->name('dashboard');
+})->middleware(['auth', 'roles:admin,user,operator'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -22,5 +23,10 @@ Route::middleware('auth')->group(function () {
 Route::middleware('roles:admin')->group(function () {
     Route::resource('data_diri', DataDiriController::class);
 });
+
+Route::middleware('roles:admin,operator')->group(function () {
+    Route::resource('data_dosen', DosenController::class);
+});
+
 
 require __DIR__.'/auth.php';

@@ -124,7 +124,7 @@
                       @endauth
 
                       @auth
-                      @if(Auth::user()->role=='admin'|| Auth::user()->role == 'writer')
+                      @if(Auth::user()->role=='admin'|| Auth::user()->role == 'operator')
                       <li>
                         <a
                           href=""
@@ -136,14 +136,28 @@
                         <a
                           href=""
                           class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                          >Pemetaan Jadwal</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href=""
+                          class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                           >Data Mata Kuliah</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="{{ route('data_dosen.index') }}"
+                          class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                          >Data Dosen</a
                         >
                       </li>
                       @endif
                       @endauth
 
                       @auth
-                      @if(Auth::user()->role=='admin'|| Auth::user()->role == 'writer' ||Auth::user()-> role == 'user')
+                      @if(Auth::user()->role=='admin'|| Auth::user()->role == 'operator' ||Auth::user()-> role == 'user')
                       <li>
                         <a
                           href=""

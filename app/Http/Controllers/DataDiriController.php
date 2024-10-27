@@ -25,7 +25,7 @@ class DataDiriController extends Controller
         $validated = $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users,email,' . $id,
-            'role' => 'required|in:admin,user,writer',
+            'role' => 'required|in:admin,user,operator',
 
         ]);
 
@@ -48,7 +48,7 @@ class DataDiriController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email'=>'required|string|email|unique:users,email,' . $id,
-            'role' => 'required|in:admin,user,writer',
+            'role' => 'required|in:admin,user,operator',
 
         ]);
         $datas = User::find($id);
