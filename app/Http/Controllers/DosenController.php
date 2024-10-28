@@ -19,13 +19,13 @@ class DosenController extends Controller
     }
 
 
-    public function store(Request $request, string $id)
+    public function store(Request $request)
     {
         // Validasi data
         $validated = $request->validate([
 
             'NIP' => 'required|unique:dosens,NIP',
-            'Nama' => 'required|string|max:100'
+            'Nama' => 'required|string|max:100' 
 
         ]);
 
@@ -38,7 +38,7 @@ class DosenController extends Controller
     public function edit($id)
     {
         $datas = Dosen::findOrFail($id);
-        return view('data_dosen.edit', compact('datas'));
+        return view('data_dosen.index', compact('datas'));
     }
 
     public function update(Request $request, string $id)

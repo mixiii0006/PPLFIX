@@ -4,6 +4,7 @@ use App\Http\Controllers\DataDiriController;
 use App\Http\Controllers\DosenController;
 use illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -27,6 +28,7 @@ Route::middleware('roles:admin')->group(function () {
 Route::middleware('roles:admin,operator')->group(function () {
     Route::resource('data_dosen', DosenController::class);
 });
+
 
 
 require __DIR__.'/auth.php';
