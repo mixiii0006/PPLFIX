@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="overflow-x-hidden">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.MedSched', 'MedSched') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -26,7 +26,7 @@
               id="drawer-navigation"
             >
               <div class="overflow-y-auto py-5 px-3 h-full bg-white dark:bg-gray-800">
-                <form action="#" method="GET" class="md:hidden mb-2">
+                {{-- <form action="#" method="GET" class="md:hidden mb-2">
                   <label for="sidebar-search" class="sr-only">Search</label>
                   <div class="relative">
                     <div
@@ -53,7 +53,7 @@
                       placeholder="Search"
                     />
                   </div>
-                </form>
+                </form> --}}
                 <ul class="space-y-2">
                   <li>
                     <a

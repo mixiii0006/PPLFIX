@@ -1,7 +1,7 @@
 <x-app-layout>
 
 {{-- @section('index') --}}
-<section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+<section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 ">
 
     {{-- <div class="mx-auto max-w-screen-xl px-4 lg:px-12"> --}}
         <!-- Start coding here -->
@@ -26,7 +26,7 @@
                     <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                     </svg>
-                    Add product
+                    Tambah
                 </button>
 
                     <div class="flex items-center space-x-3 w-full md:w-auto">
@@ -79,6 +79,7 @@
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
+                            <th scope="col" class="px-4 py-3">NO</th>
                             <th scope="col" class="px-4 py-3">NIP</th>
                             <th scope="col" class="px-4 py-3">Nama</th>
 
@@ -91,6 +92,7 @@
                     <tbody id="data-container">
                         @foreach ($datas as $data)
                         <tr class="border-b dark:border-gray-700">
+                            <td class="px-4 py-3">{{ $data->id}}</td>
                             <td class="px-4 py-3">{{ $data->NIP}}</td>
                             <td class="px-4 py-3">{{ $data->Nama}}</td>
                             <td class="px-4 py-3 flex items-center justify-end">
@@ -180,7 +182,7 @@
                     </tbody>
                 </table>
             </div>
-            <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
+            {{-- <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
                 <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
                     Showing
                     <span class="font-semibold text-gray-900 dark:text-white">1-10</span>
@@ -220,7 +222,7 @@
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </nav> --}}
         </div>
 
         <div id="defaultModal" tabindex="-1" aria-hidden="true" class="hidden bg-gray-500 bg-opacity-25  overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
@@ -240,7 +242,7 @@
                     <!-- Modal body -->
                     <form action="{{ route('data_dosen.store') }}" method="POST">
                         @csrf
-                        <div class="grid gap-4 mb-4 ">
+                        <div class="grid gap-4">
                             <div class="grid gap-4 mb-7 sm:grid-cols-1">
                                 <div>
                                     <label for="NIP" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIP</label>
@@ -253,7 +255,7 @@
                             </div>
 
                         </div>
-                        <button type="submit" class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                        <button type="submit" class="flex text-blue-500 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-8  py-2.5 text-center border border-blue-500 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                             <svg class="mr-1 -ml-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
                             Tambah
                         </button>
