@@ -26,6 +26,10 @@ class MataKuliahController extends Controller
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users,email,' . $id,
             'role' => 'required|in:admin,user,writer',
+            'nama_matakuliah',
+        'tingkat',
+        'tanggal_mulai',
+        'tanggal_selesai'
 
         ]);
 
