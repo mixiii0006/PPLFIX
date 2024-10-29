@@ -99,20 +99,11 @@
                                                 @method('PUT')
 
                                                 <div class="grid gap-4 mb-7 sm:grid-cols-1">
-                                                    <div>
+                                                    <div class="search-box">
                                                         <label for="nama_matakuliah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
                                                         <input type="text" name="nama_matakuliah" id="nama_matakuliah" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ old('nama_matakuliah', $data->nama_matakuliah) }}" required="">
                                                     </div>
-                                                    <div>
-                                                        <label for="nama_matakuliah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
-                                                        <select id="nama_matakuliah" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                            <option selected="">{{ old('nama_matakuliah', $data->mata_kuliah->nama_matakuliah) }}</option>
-                                                            <option value="TV">TV/Monitors</option>
-                                                            <option value="PC">PC</option>
-                                                            <option value="GA">Gaming/Console</option>
-                                                            <option value="PH">Phones</option>
-                                                        </select>
-                                                    </div>
+
                                                     <div>
                                                         <label for="tingkat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tingkat</label>
                                                         <input type="text" name="tingkat" id="tangkat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ old('tingkat', $data->tingkat) }}" required="">
@@ -169,10 +160,12 @@
                             @csrf
                             <div class="grid gap-4">
                                 <div class="grid gap-4 mb-7 sm:grid-cols-1">
-                                    <div>
+                                    <div class="inputBox">
                                         <label for="nama_matakuliah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
-                                        <input type="text" name="nama_matakuliah" id="nama_matakuliah" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
+                                        <input type="text" name="nama_matakuliah" id="nama_matakuliah" placeholder="Cari Mata Kuliah" autocomplete="off" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
+                                        <input type="hidden" id="courseData" value="{{ implode(',', $datas->pluck('nama_matakuliah')->toArray()) }}">
                                     </div>
+                                    <div class="resultBox" style="display: none;"></div>
                                     <div>
                                         <label for="tingkat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tingkat</label>
                                         <input type="text" name="tingkat" id="tangkat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
@@ -240,7 +233,141 @@
             });
 
 
+            document.addEventListener('DOMContentLoaded', function() {
+                const courseData = document.getElementById('courseData').value;
+                let datas = courseData.split(',');
+
+                const resultBox = document.querySelector('.resultBox');
+                const inputBox = document.getElementById('nama_matakuliah');
+
+                inputBox.addEventListener('keyup', function() {
+                    let result = [];
+                    let input = inputBox.value;
+
+                    if (input.length) {
+                        result = datas.filter((keyword) => {
+                            return keyword.toLowerCase().includes(input.toLowerCase());
+                        });
+
+                        display(result);
+                    } else {
+                        resultBox.innerHTML = "";
+                        resultBox.style.display = "none"; // Sembunyikan kotak hasil jika input kosong
+                    }
+
+                    if (!result.length) {
+                        resultBox.innerHTML = "";
+                        resultBox.style.display = "none"; // Sembunyikan kotak hasil jika tidak ada hasil
+                    }
+                });
+
+                function display(result) {
+                    if (result.length) {
+                        const content = result.map((list) => {
+                            return "<li onclick='selectInput(this)' class='cursor-pointer hover:bg-gray-200'>" + list + "</li>";
+                        });
+                        resultBox.innerHTML = "<ul class='border border-gray-300 bg-white'>" + content.join('') + "</ul>";
+                        resultBox.style.display = "block"; // Tampilkan kotak hasil
+                        }
+                    }
+                });
+
+                function selectInput(list) {
+                    const inputBox = document.getElementById('nama_matakuliah');
+                    inputBox.value = list.innerHTML; // Set input value ke nama mata kuliah yang dipilih
+                    const resultBox = document.querySelector('.resultBox');
+                    resultBox.innerHTML = "";
+                    resultBox.style.display = "none"; // Sembunyikan kotak hasil setelah pemilihan
+                }
+
+
+
         </script>
         </section>
 
     </x-app-layout>
+
+
+
+    <script>
+        let datas =[matakuliah database];
+
+        const resultBox = document.querySelector('.resultBox');
+        const inputBox = document.querySelector('.inputBox');
+
+        inputBox.onkeyup = function() {
+            let result = [];
+            let input =inputBox.value;
+            if (input.length) {
+                result = datas.filter((keyword) => {
+                return.toLowerCase().includes(input.toLowerCase())
+                });
+                console.log(result);
+            }
+
+            display(result);
+
+            if(!result.length) {
+                resultBox.innerHTML = "";
+            }
+        }
+
+        function display(result){
+            const content = result.map((list) => {
+                return "<li onclick= selectInput(this)>" + list + "</li>";
+            });
+            resultBox.innerHTML = "<ul>" + content.join('') + "</ul>";
+
+        }
+
+        function selectInput(list){
+            inputBox.value = list.innerHTML;
+            resultBox.innerHTML = "";
+        }
+
+
+        // Get the course names from the hidden input
+    const courseData = document.getElementById('courseData').value;
+    let datas = courseData.split(','); // Split the string into an array
+
+    const resultBox = document.querySelector('.resultBox');
+    const inputBox = document.querySelector('.inputBox');
+
+    inputBox.onkeyup = function() {
+    let result = [];
+    let input = inputBox.value;
+
+    if (input.length) {
+        result = datas.filter((keyword) => {
+            return keyword.toLowerCase().includes(input.toLowerCase());
+        });
+
+        display(result);
+    } else {
+        resultBox.innerHTML = "";
+        resultBox.style.display = "none"; // Hide result box if input is empty
+    }
+
+    if (!result.length) {
+        resultBox.innerHTML = "";
+        resultBox.style.display = "none"; // Hide result box if no results
+    }
+    }
+
+    function display(result) {
+        if (result.length) {
+            const content = result.map((list) => {
+                return "<li onclick=selectInput(this)>" + list + "</li>";
+            });
+            resultBox.innerHTML = "<ul>" + content.join('') + "</ul>";
+            resultBox.style.display = "block"; // Show result box
+        }
+    }
+
+    function selectInput(list) {
+        inputBox.value = list.innerHTML;
+        resultBox.innerHTML = "";
+        resultBox.style.display = "none"; // Hide result box after selection
+    }
+
+    </script>
