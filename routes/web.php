@@ -1,10 +1,16 @@
 <?php
 
 use App\Http\Controllers\DataDiriController;
+use App\Http\Controllers\DataRuanganController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\MataKuliahController;
+use App\Http\Controllers\PemetaanMKController;
 use illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\RoleMiddleware;
+use App\Models\JadwalRuangan;
+use App\Models\MataKuliah;
+use App\Models\Pemetaan;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,6 +34,23 @@ Route::middleware('roles:admin')->group(function () {
 Route::middleware('roles:admin,operator')->group(function () {
     Route::resource('data_dosen', DosenController::class);
 });
+
+Route::middleware('roles:admin,operator')->group(function () {
+    Route::resource('data_mk', MataKuliahController::class);
+});
+
+Route::middleware('roles:admin,operator')->group(function () {
+    Route::resource('data_ruangan', DataRuanganController::class);
+});
+
+Route::middleware('roles:admin,operator')->group(function () {
+    Route::resource('pemetaan_mk', PemetaanMKController::class);
+});
+
+Route::middleware('roles:admin,operator,user')->group(function () {
+    Route::resource('jadwal_ruangan', JadwalRuangan::class);
+});
+
 
 
 

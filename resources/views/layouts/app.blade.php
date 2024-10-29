@@ -127,21 +127,21 @@
                       @if(Auth::user()->role=='admin'|| Auth::user()->role == 'operator')
                       <li>
                         <a
-                          href=""
+                          href="{{ route('data_ruangan.index') }}"
                           class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                           >Data Ruangan</a
                         >
                       </li>
                       <li>
                         <a
-                          href=""
+                          href="{{ route('pemetaan_mk.index') }}"
                           class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                           >Pemetaan Jadwal</a
                         >
                       </li>
                       <li>
                         <a
-                          href=""
+                          href="{{ route('data_mk.index') }}"
                           class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                           >Data Mata Kuliah</a
                         >
@@ -160,7 +160,7 @@
                       @if(Auth::user()->role=='admin'|| Auth::user()->role == 'operator' ||Auth::user()-> role == 'user')
                       <li>
                         <a
-                          href=""
+                          href="{{ route('jadwal_ruangan.index') }}"
                           class="flex items-center p-2 pl-11 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                           >Jadwal Ruangan</a
                         >
@@ -168,7 +168,7 @@
                       @endif
                       @endauth
 
-                      @auth
+                      {{-- @auth
                       @if(Auth::user()->role=='user')
                       <li>
                         <a
@@ -178,7 +178,7 @@
                         >
                       </li>
                       @endif
-                      @endauth
+                      @endauth --}}
                     </ul>
                   </li>
                   <li>
