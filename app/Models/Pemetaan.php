@@ -9,7 +9,6 @@ class Pemetaan extends Model
 {
     protected $table = 'pemetaans';
 
-    // Atribut yang dapat diisi secara massal
     protected $fillable = [
         'dosen_id',
         'matakuliah_id',
