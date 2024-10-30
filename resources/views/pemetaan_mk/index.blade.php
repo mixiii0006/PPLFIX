@@ -49,8 +49,8 @@
                             @foreach ($datas as $data)
                             <tr class="border-b dark:border-gray-700">
                                 <td class="px-4 py-3">{{ $data->id}}</td>
-                                <td class="px-4 py-3">{{ $data->mata_kuliah->nama_matakuliah}}</td>
-                                <td class="px-4 py-3">{{ $data->dosen->Nama}}</td>
+                                <td class="px-4 py-3">{{ $pemetaan->mata_kuliah->nama_matakuliah ?? 'N/A' }}</td>
+                                <td class="px-4 py-3">{{ $pemetaan->dosen>Nama ?? 'N/A' }}</td>
                                 <td class="px-4 py-3">{{ $data->tanggal_mulai}}</td>
                                 <td class="px-4 py-3">{{ $data->tanggal_selesai}}</td>
                                 <td class="px-4 py-3 flex items-center justify-end">
@@ -160,16 +160,29 @@
                             @csrf
                             <div class="grid gap-4">
                                 <div class="grid gap-4 mb-7 sm:grid-cols-1">
-                                    <div class="inputBox">
+                                    {{-- <div class="inputBox">
                                         <label for="nama_matakuliah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
                                         <input type="text" name="nama_matakuliah" id="nama_matakuliah" placeholder="Cari Mata Kuliah" autocomplete="off" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
                                         <input type="hidden" id="courseData" value="{{ implode(',', $datas->pluck('nama_matakuliah')->toArray()) }}">
-                                    </div>
-                                    <div class="resultBox" style="display: none;"></div>
-                                    <div>
-                                        <label for="tingkat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tingkat</label>
-                                        <input type="text" name="tingkat" id="tangkat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
-                                    </div>
+                                    </div> --}}
+                                    {{-- <select name="" id="">
+                                        @foreach ($matakuliah as $item)
+                                        <option value="{{$item->nama_matakuliah}}">{{$item->nama_matakuliah}}</option>
+
+                                        @endforeach
+                                    </select> --}}
+                                    <label for="nama_matakuliah" class="block  text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
+                                    <select name="nama_matakuliah" id="nama_matakuliah" class="js-example-basic-multiple bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="states[]" multiple="multiple">
+                                        @foreach ($matakuliah as $item)
+                                            <option value="{{ $item->nama_matakuliah }}">{{ $item->nama_matakuliah }}</option>
+                                        @endforeach
+                                    </select>
+                                    <label for="Nama" class="block  text-sm font-medium text-gray-900 dark:text-white">Dosen</label>
+                                    <select name="Nama" id="Nama" class="js-example-basic-multiple bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="states[]" multiple="multiple">
+                                        @foreach ($dosen as $item)
+                                            <option value="{{ $item->Nama }}">{{ $item->Nama }}</option>
+                                        @endforeach
+                                    </select>
                                     <div>
                                         <label for="tanggal_mulai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Mulai</label>
                                         <input type="date" name="tanggal_mulai" id="tanggal_mulai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
@@ -279,6 +292,11 @@
                     resultBox.innerHTML = "";
                     resultBox.style.display = "none"; // Sembunyikan kotak hasil setelah pemilihan
                 }
+
+                $(document).ready(function() {
+                    console.log("Initializing Select2...");
+                    $('.js-example-basic-multiple').select2();
+                });
 
 
 
