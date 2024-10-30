@@ -2,29 +2,23 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Pemetaan extends Model
 {
-    protected $table = 'pemetaans';
+     use HasFactory;
 
-    protected $fillable = [
-        'dosen_id',
-        'matakuliah_id',
-        'tanggal_mulai',
-        'tanggal_selesai',
-    ];
-
-    // Relasi ke model Dosen
-    public function dosen(): BelongsTo
+    // Define the relationship with Dosen
+    public function dosen()
     {
-        return $this->belongsTo(Dosen::class);
+        return $this->belongsTo(Dosen::class, 'dosen_id');
     }
 
-    // Relasi ke model MataKuliah
-    public function matakuliah(): BelongsTo
+    // Define the relationship with MataKuliah
+    public function mata_kuliah()
     {
-        return $this->belongsTo(MataKuliah::class);
+        return $this->belongsTo(MataKuliah::class, 'matakuliah_id');
     }
 }

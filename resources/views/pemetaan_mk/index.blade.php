@@ -49,8 +49,8 @@
                             @foreach ($datas as $data)
                             <tr class="border-b dark:border-gray-700">
                                 <td class="px-4 py-3">{{ $data->id}}</td>
-                                <td class="px-4 py-3">{{ $pemetaan->mata_kuliah->nama_matakuliah ?? 'N/A' }}</td>
-                                <td class="px-4 py-3">{{ $pemetaan->dosen>Nama ?? 'N/A' }}</td>
+                                <td class="px-4 py-3">{{ $data->mata_kuliah->nama_matakuliah ?? 'N/A' }}</td>
+                                <td class="px-4 py-3">{{ $data->dosen->Nama ?? 'N/A' }}</td>
                                 <td class="px-4 py-3">{{ $data->tanggal_mulai}}</td>
                                 <td class="px-4 py-3">{{ $data->tanggal_selesai}}</td>
                                 <td class="px-4 py-3 flex items-center justify-end">
@@ -156,7 +156,7 @@
                             </button>
                         </div>
                         <!-- Modal body -->
-                        <form action="{{ route('data_mk.store') }}" method="POST">
+                        <form action="{{ route('pemetaan_mk.store') }}" method="POST">
                             @csrf
                             <div class="grid gap-4">
                                 <div class="grid gap-4 mb-7 sm:grid-cols-1">

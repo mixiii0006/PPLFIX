@@ -11,7 +11,7 @@ class PemetaanMKController extends Controller
 {
     public function index()
 {
-    $datas = Pemetaan::with(['dosen', 'Pemetaan'])->get();
+    $datas = Pemetaan::with(['Dosen', 'mata_kuliah'])->get();
     $matakuliah = MataKuliah::all();
     $dosen = Dosen::all();
     return view('pemetaan_mk.index', compact('datas', 'matakuliah', 'dosen'));

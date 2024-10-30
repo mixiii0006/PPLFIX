@@ -18,6 +18,9 @@ class MataKuliah extends Model
         'tanggal_mulai',
         'tanggal_selesai'
     ];
+    protected $table = 'mata_kuliahs';
+
+   
 
     public function dosen(): BelongsToMany
     {
