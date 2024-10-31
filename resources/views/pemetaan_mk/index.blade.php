@@ -165,12 +165,7 @@
                                         <input type="text" name="nama_matakuliah" id="nama_matakuliah" placeholder="Cari Mata Kuliah" autocomplete="off" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
                                         <input type="hidden" id="courseData" value="{{ implode(',', $datas->pluck('nama_matakuliah')->toArray()) }}">
                                     </div> --}}
-                                    {{-- <select name="" id="">
-                                        @foreach ($matakuliah as $item)
-                                        <option value="{{$item->nama_matakuliah}}">{{$item->nama_matakuliah}}</option>
-
-                                        @endforeach
-                                    </select> --}}
+                                    
                                     <label for="nama_matakuliah" class="block  text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
                                     <select name="nama_matakuliah" id="nama_matakuliah" class="js-example-basic-multiple bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="states[]" multiple="multiple">
                                         @foreach ($matakuliah as $item)
