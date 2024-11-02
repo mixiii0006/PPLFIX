@@ -36,7 +36,7 @@ class PemetaanMKController extends Controller
 public function update(Request $request, string $id)
 {
 
-    $Pemetaan = Pemetaan::findOrFail($id);
+    $datas = Pemetaan::findOrFail($id);
 
     $request->validate([
             'dosen_id' => 'required|exists:dosens,id',
@@ -46,7 +46,7 @@ public function update(Request $request, string $id)
 
     ]);
 
-    $Pemetaan->update($request->all());
+    $datas->update($request->all());
     return redirect(route('pemetaan_mk.index'))->with('success', 'Data Pemetaan berhasil diperbarui.');
 }
 

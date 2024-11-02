@@ -3,6 +3,7 @@
 use App\Http\Controllers\DataDiriController;
 use App\Http\Controllers\DataRuanganController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\JadwalRuanganController;
 use App\Http\Controllers\MataKuliahController;
 use App\Http\Controllers\PemetaanMKController;
 use illuminate\Support\Facades\Auth;
@@ -48,9 +49,8 @@ Route::middleware('roles:admin,operator')->group(function () {
 });
 
 Route::middleware('roles:admin,operator,user')->group(function () {
-    Route::resource('jadwal_ruangan', JadwalRuangan::class);
+    Route::resource('jadwal_ruangan', JadwalRuanganController::class);
 });
-
 
 
 
