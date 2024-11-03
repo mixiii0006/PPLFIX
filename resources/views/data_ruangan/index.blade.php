@@ -77,7 +77,7 @@
                             </tr>
                             <x-hapus :id="$data->id" :route="route('data_ruangan.destroy', $data->id)"/>
 
-                                <div id="{{$data->id}}-updateProductModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden   bg-gray-500 bg-opacity-25 fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
+                                <div id="{{$data->id}}-updateProductModal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden    bg-gray-500 bg-opacity-25 fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
                                     <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                                         <!-- Modal content -->
                                         <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
