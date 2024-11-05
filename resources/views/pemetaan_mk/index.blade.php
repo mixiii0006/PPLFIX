@@ -99,15 +99,20 @@
                                                 @method('PUT')
 
                                                 <div class="grid gap-4 mb-7 sm:grid-cols-1">
-                                                    <div class="search-box">
-                                                        <label for="nama_matakuliah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
-                                                        <input type="text" name="nama_matakuliah" id="nama_matakuliah" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ old('nama_matakuliah', $data->nama_matakuliah) }}" required="">
-                                                    </div>
-
-                                                    <div>
-                                                        <label for="tingkat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tingkat</label>
-                                                        <input type="text" name="tingkat" id="tangkat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ old('tingkat', $data->tingkat) }}" required="">
-                                                    </div>
+                                                    <label for="nama_matakuliah" class="block  text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
+                                                    <select name="matakuliah_id" id="nama_matakuliah" class="js-example-basic-single bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="state"  >
+                                                        <option value="{{  $data->id }}">{{ old('nama_matakuliah', $data->mata_kuliah->nama_matakuliah) }}</option>
+                                                        @foreach ($matakuliah as $item)
+                                                            <option value="{{  $item->id }}">{{ old('nama_matakuliah', $item->nama_matakuliah) }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <label for="Nama" class="block  text-sm font-medium text-gray-900 dark:text-white">Dosen</label>
+                                                    <select name="dosen.id" id="Nama" class="js-example-basic-single bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="state" >
+                                                        <option value="{{  $data->id }}">{{ old('Nama', $data->dosen->Nama) }}</option>
+                                                        @foreach ($dosen as $item)
+                                                            <option value="{{  $item->id }}">{{ old('Nama', $item->Nama) }}</option>
+                                                        @endforeach
+                                                    </select>
                                                     <div>
                                                         <label for="tanggal_mulai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Mulai</label>
                                                         <input type="date" name="tanggal_mulai" id="tanggal_mulai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ old('tanggal_mulai', $data->tanggal_mulai) }}" required="">
@@ -127,11 +132,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <script>   document.addEventListener("DOMContentLoaded", function(event) {
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function(event) {
                                     document.getElementById('{{$data->id}}-editButton ').click();
                                     });
-                            </script>
-
+                                </script>
                             @endforeach
 
                         </tbody>
@@ -160,24 +165,20 @@
                             @csrf
                             <div class="grid gap-4">
                                 <div class="grid gap-4 mb-7 sm:grid-cols-1">
-                                    {{-- <div class="inputBox">
-                                        <label for="nama_matakuliah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
-                                        <input type="text" name="nama_matakuliah" id="nama_matakuliah" placeholder="Cari Mata Kuliah" autocomplete="off" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="">
-                                        <input type="hidden" id="courseData" value="{{ implode(',', $datas->pluck('nama_matakuliah')->toArray()) }}">
-                                    </div> --}}
 
                                     <label for="nama_matakuliah" class="block  text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
-                                    <select name="nama_matakuliah" id="nama_matakuliah" class="js-example-basic-multiple bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="states[]" multiple="multiple">
+                                    <select name="matakuliah_id" id="nama_matakuliah" class="js-example-basic-single bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="states" multiple="multiple">
                                         @foreach ($matakuliah as $item)
-                                            <option value="{{ $item->nama_matakuliah }}">{{ $item->nama_matakuliah }}</option>
+                                            <option value="{{ $item->id }}">{{ $item->nama_matakuliah }}</option>
                                         @endforeach
                                     </select>
                                     <label for="Nama" class="block  text-sm font-medium text-gray-900 dark:text-white">Dosen</label>
-                                    <select name="Nama" id="Nama" class="js-example-basic-multiple bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="states[]" multiple="multiple">
+                                    <select name="dosen.id" id="Nama" class="js-example-basic-single bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="states" multiple="multiple">
                                         @foreach ($dosen as $item)
-                                            <option value="{{ $item->Nama }}">{{ $item->Nama }}</option>
+                                            <option value="{{ $item->id }}">{{ $item->Nama }}</option>
                                         @endforeach
                                     </select>
+
                                     <div>
                                         <label for="tanggal_mulai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Mulai</label>
                                         <input type="date" name="tanggal_mulai" id="tanggal_mulai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
@@ -203,7 +204,7 @@
 
 
         <script>
-           
+
             function searchData() {
             const searchInput = document.getElementById('simple-search').value.toLowerCase();
             const dataContainer = document.getElementById('data-container');
@@ -289,9 +290,10 @@
                 }
 
                 $(document).ready(function() {
-                    console.log("Initializing Select2...");
-                    $('.js-example-basic-multiple').select2();
+                    $('.js-example-basic-single').select2();
+
                 });
+
 
 
 
@@ -302,85 +304,4 @@
 
 
 
-    <script>
-        let datas =[matakuliah database];
 
-        const resultBox = document.querySelector('.resultBox');
-        const inputBox = document.querySelector('.inputBox');
-
-        inputBox.onkeyup = function() {
-            let result = [];
-            let input =inputBox.value;
-            if (input.length) {
-                result = datas.filter((keyword) => {
-                return.toLowerCase().includes(input.toLowerCase())
-                });
-                console.log(result);
-            }
-
-            display(result);
-
-            if(!result.length) {
-                resultBox.innerHTML = "";
-            }
-        }
-
-        function display(result){
-            const content = result.map((list) => {
-                return "<li onclick= selectInput(this)>" + list + "</li>";
-            });
-            resultBox.innerHTML = "<ul>" + content.join('') + "</ul>";
-
-        }
-
-        function selectInput(list){
-            inputBox.value = list.innerHTML;
-            resultBox.innerHTML = "";
-        }
-
-
-        // Get the course names from the hidden input
-    const courseData = document.getElementById('courseData').value;
-    let datas = courseData.split(','); // Split the string into an array
-
-    const resultBox = document.querySelector('.resultBox');
-    const inputBox = document.querySelector('.inputBox');
-
-    inputBox.onkeyup = function() {
-    let result = [];
-    let input = inputBox.value;
-
-    if (input.length) {
-        result = datas.filter((keyword) => {
-            return keyword.toLowerCase().includes(input.toLowerCase());
-        });
-
-        display(result);
-    } else {
-        resultBox.innerHTML = "";
-        resultBox.style.display = "none"; // Hide result box if input is empty
-    }
-
-    if (!result.length) {
-        resultBox.innerHTML = "";
-        resultBox.style.display = "none"; // Hide result box if no results
-    }
-    }
-
-    function display(result) {
-        if (result.length) {
-            const content = result.map((list) => {
-                return "<li onclick=selectInput(this)>" + list + "</li>";
-            });
-            resultBox.innerHTML = "<ul>" + content.join('') + "</ul>";
-            resultBox.style.display = "block"; // Show result box
-        }
-    }
-
-    function selectInput(list) {
-        inputBox.value = list.innerHTML;
-        resultBox.innerHTML = "";
-        resultBox.style.display = "none"; // Hide result box after selection
-    }
-
-    </script>

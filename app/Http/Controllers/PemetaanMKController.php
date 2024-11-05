@@ -23,7 +23,7 @@ class PemetaanMKController extends Controller
         $validated = $request->validate([
 
             'dosen_id' => 'required|exists:dosens,id',
-            'Pemetaan_id' => 'required|exists:Pemetaan,id',
+            'matakuliah_id' => 'required|exists:mata_kuliahs,id',
             'tanggal_mulai' => 'required|date',
             'tanggal_selesai' => 'required'
         ]);
@@ -40,7 +40,7 @@ public function update(Request $request, string $id)
 
     $request->validate([
             'dosen_id' => 'required|exists:dosens,id',
-            'Pemetaan_id' => 'required|exists:Pemetaan,id',
+            'matakuliah_id' => 'required|exists:mata_kuliahs,id',
             'tanggal_mulai' => 'required|date',
             'tanggal_selesai' => 'required'
 

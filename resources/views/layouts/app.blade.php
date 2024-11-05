@@ -177,7 +177,7 @@
                       @endif
                       @endauth
 
-                      
+
                     </ul>
                   </li>
                   <li>
@@ -645,5 +645,6 @@
 @stack('modals')
           </div>
 @stack('scripts')
+
     </body>
 </html>
