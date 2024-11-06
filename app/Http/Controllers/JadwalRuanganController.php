@@ -13,6 +13,9 @@ class JadwalRuanganController extends Controller
 {
     $datas = JadwalRuangan::with(['ruangan', 'pemetaan'])->get();
     $pemetaan = Pemetaan::with(['mata_kuliah', 'dosen'])->get();
+
+    // dd($pemetaan);
+
     $ruangan = Ruangan::all();
     return view('jadwal_ruangan.index', compact('datas', 'pemetaan', 'ruangan'));
 }

@@ -249,7 +249,7 @@
                             <div class="grid gap-4 mb-7 sm:grid-cols-1">
 
                                 <label for="nama_matakuliah" class="block  text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
-                                <select name="matakuliah_id" id="nama_matakuliah" class="js-example-basic-single bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="states" multiple="multiple">
+                                <select name="matakuliah_id" id="nama_matakuliah" class="js-example-basic-multiple bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="states" multiple="multiple">
                                     @foreach ($pemetaan as $item)
                                         <option value="{{ $item->id }}">{{ $item->mata_kuliah->nama_matakuliah }}</option>
                                     @endforeach
@@ -261,7 +261,7 @@
                                 <input type="hidden" name="dosen_id" id="dosen_id"> --}}
 
                                 <label for="nama_ruangan" class="block  text-sm font-medium text-gray-900 dark:text-white">Ruang</label>
-                                <select name="ruangan_id" id="nama_ruangan" class="js-example-basic-single bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="states" multiple="multiple">
+                                <select name="ruangan_id" id="nama_ruangan" class="js-example-basic-multiple bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="states" multiple="multiple">
                                     @foreach ($ruangan as $item)
                                         <option value="{{ $item->id }}">{{ $item->nama_ruangan }}</option>
                                     @endforeach
