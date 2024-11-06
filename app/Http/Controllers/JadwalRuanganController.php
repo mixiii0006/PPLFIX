@@ -11,7 +11,7 @@ class JadwalRuanganController extends Controller
 {
     public function index()
 {
-    $datas = JadwalRuangan::with(['ruangan', 'pemetaan'])->get();
+    $datas = JadwalRuangan::with(['ruangan', 'pemetaan.mata_kuliah', 'pemetaan.dosen'])->get();
     $pemetaan = Pemetaan::with(['mata_kuliah', 'dosen'])->get();
 
     // dd($pemetaan);

@@ -1,4 +1,14 @@
 <x-app-layout>
+    {{-- show all error validation --}}
+    @if ($errors->any())
+        <div class="text-red-500">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <section class="bg-white py-3 antialiased dark:bg-gray-900 md:py-4">
         <div class="py-5 px-4 mx-auto max-w-screen-xl lg:py-5 lg:px-6">
           <!-- Heading & Filters -->
@@ -94,7 +104,7 @@
             </div>
           </div>
 
-          {{-- @foreach ($datas as $data) --}}
+          @foreach ($datas as $data)
           <div class="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
             <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-lg shadow-gray-500/50  dark:border-gray-700 dark:bg-gray-800">
 
@@ -107,27 +117,32 @@
                     <tr>
                         <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Ruangan</a></td>
                         <td class="pr-2 text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">:</td>
-                        <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">Ruangan Diskusi</td>
+                        <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">{{ $data->ruangan->nama_ruangan }}</td>
                     </tr>
                     <tr>
                         <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Matakuliah</a></td>
                         <td class="pr-2">:</td>
+                        <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">{{ $data->pemetaan->mata_kuliah->nama_matakuliah }}</td>
                     </tr>
                     <tr>
-                      <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Dosen</a></td>
-                      <td class="pr-2">:</td>
-                  </tr>
+                        <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Dosen</a></td>
+                        <td class="pr-2">:</td>
+                        <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">{{ $data->pemetaan->dosen->Nama }}</td>
+                    </tr>
                     <tr>
                         <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Jam Masuk</a></td>
                         <td class="pr-2">:</td>
+                        <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">{{ $data->jam_masuk }}</td>
                     </tr>
                     <tr>
                         <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Jam Keluar</a></td>
                         <td class="pr-2">:</td>
+                        <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">{{ $data->jam_keluar }}</td>
                     </tr>
                     <tr>
                         <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Hari</a></td>
                         <td class="pr-2">:</td>
+                        <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">{{ $data->hari }}</td>
                     </tr>
                 </table>
 
@@ -225,7 +240,7 @@
             </script> --}}
 
           </div>
-          {{-- @endforeach --}}
+          @endforeach
 
           {{-- modal tambah --}}
           <div id="defaultModal" tabindex="-1" aria-hidden="true" class="hidden bg-gray-500 bg-opacity-25  overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
@@ -249,11 +264,14 @@
                             <div class="grid gap-4 mb-7 sm:grid-cols-1">
 
                                 <label for="nama_matakuliah" class="block  text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
-                                <select name="matakuliah_id" id="nama_matakuliah" class="js-example-basic-multiple bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="states" multiple="multiple">
+                                <select name="pemetaan_id" id="nama_matakuliah" class="js-example-basic-multiple bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="states" multiple="multiple">
                                     @foreach ($pemetaan as $item)
                                         <option value="{{ $item->id }}">{{ $item->mata_kuliah->nama_matakuliah }}</option>
                                     @endforeach
                                 </select>
+                                @error('pemetaan_id')
+                                    <div class="text-red-500">{{ $message }}</div>
+                                @enderror
 
                                 {{-- <!-- Input Dosen (readonly) -->
                                 <label for="dosen" class="block text-sm font-medium text-gray-900 dark:text-white">Dosen</label>
@@ -269,16 +287,16 @@
 
                                 <div>
                                     <label for="jam_masuk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam Masuk</label>
-                                    <input type="time" name="tanggal_mulai" id="tanggal_mulai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
+                                    <input type="time" name="jam_masuk" id="jam_masuk" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
                                 </div>
                                 <div>
                                     <label for="jam_keluar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam Keluar</label>
-                                    <input type="time" name="tanggal_selesai" id="tanggal_selesai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
+                                    <input type="time" name="jam_keluar" id="jam_keluar" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
                                 </div>
 
                                 <div>
-                                    <label for="jam_keluar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam Keluar</label>
-                                    <input type="time" name="tanggal_selesai" id="tanggal_selesai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
+                                    <label for="hari" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam Keluar</label>
+                                    <input type="date" name="hari" id="hari" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
                                 </div>
                             </div>
 
