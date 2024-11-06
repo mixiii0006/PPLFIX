@@ -15,7 +15,7 @@
               </nav>
 
               <div class="inline-flex flex-col w-full rounded-md shadow-sm md:w-auto md:flex-row" role="group">
-                
+
                 <button type="button"
                         class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-t-lg md:rounded-tr-none md:rounded-l-lg hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-primary-500 dark:focus:text-white">
                   Senin
@@ -42,7 +42,7 @@
             </div>
 
             <div class="flex items-center space-x-4">
-              <button data-modal-toggle="filterModal" data-modal-target="filterModal" type="button" class="flex w-full items-center justify-center rounded-lg border  border-blue-500 bg-white px-3 py-2 text-sm font-medium text-blue-500 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-blue focus:ring-4 focus:ring-blue-100 dark:border-blue-500 dark:bg-gray-800 dark:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue dark:focus:ring-blue-00 sm:w-auto">
+              <button id="defaultModalButton"   data-modal-target="defaultModal"data-modal-toggle="defaultModal" type="button" class="flex w-full items-center justify-center rounded-lg border  border-blue-500 bg-white px-3 py-2 text-sm font-medium text-blue-500 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-blue focus:ring-4 focus:ring-blue-100 dark:border-blue-500 dark:bg-gray-800 dark:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue dark:focus:ring-blue-00 sm:w-auto">
                 <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <path clip-rule="evenodd" fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                 </svg>
@@ -103,11 +103,33 @@
                 <div class="text-center mb-4">
                     <a href="#" class="text-lg font-bold text-blue-500 leading-tight">Jadwal</a>
                 </div>
-                <a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Ruangan :</a><br>
-                <a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Matakuliah</a><br>
-                <a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Jam Masuk :</a><br>
-                <a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Jam Keluar :</a><br>
-                <a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Hari :</a>
+                <table>
+                    <tr>
+                        <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Ruangan</a></td>
+                        <td class="pr-2 text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">:</td>
+                        <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">Ruangan Diskusi</td>
+                    </tr>
+                    <tr>
+                        <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Matakuliah</a></td>
+                        <td class="pr-2">:</td>
+                    </tr>
+                    <tr>
+                      <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Dosen</a></td>
+                      <td class="pr-2">:</td>
+                  </tr>
+                    <tr>
+                        <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Jam Masuk</a></td>
+                        <td class="pr-2">:</td>
+                    </tr>
+                    <tr>
+                        <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Jam Keluar</a></td>
+                        <td class="pr-2">:</td>
+                    </tr>
+                    <tr>
+                        <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Hari</a></td>
+                        <td class="pr-2">:</td>
+                    </tr>
+                </table>
 
             {{-- <a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Ruangan : {{ $data->ruangan->nama_ruangan}}</a><br>
                 <a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Matakuliah : {{ $data->pemetaan->nama_matakuliah}}</a><br>
@@ -206,7 +228,7 @@
           {{-- @endforeach --}}
 
           {{-- modal tambah --}}
-          {{-- <div id="defaultModal" tabindex="-1" aria-hidden="true" class="hidden bg-gray-500 bg-opacity-25  overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
+          <div id="defaultModal" tabindex="-1" aria-hidden="true" class="hidden bg-gray-500 bg-opacity-25  overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
             <div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
                 <!-- Modal content -->
                 <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
@@ -221,21 +243,42 @@
                         </button>
                     </div>
                     <!-- Modal body -->
-                    <form action="{{ route('data_ruangan.store') }}" method="POST">
+                    <form action="{{ route('jadwal_ruangan.store') }}" method="POST">
                         @csrf
                         <div class="grid gap-4">
                             <div class="grid gap-4 mb-7 sm:grid-cols-1">
+
+                                <label for="nama_matakuliah" class="block  text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
+                                <select name="matakuliah_id" id="nama_matakuliah" class="js-example-basic-single bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="states" multiple="multiple">
+                                    @foreach ($pemetaan as $item)
+                                        <option value="{{ $item->id }}">{{ $item->mata_kuliah->nama_matakuliah }}</option>
+                                    @endforeach
+                                </select>
+
+                                {{-- <!-- Input Dosen (readonly) -->
+                                <label for="dosen" class="block text-sm font-medium text-gray-900 dark:text-white">Dosen</label>
+                                <input type="text" id="dosen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5" readonly>
+                                <input type="hidden" name="dosen_id" id="dosen_id"> --}}
+
+                                <label for="nama_ruangan" class="block  text-sm font-medium text-gray-900 dark:text-white">Ruang</label>
+                                <select name="ruangan_id" id="nama_ruangan" class="js-example-basic-single bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="states" multiple="multiple">
+                                    @foreach ($ruangan as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama_ruangan }}</option>
+                                    @endforeach
+                                </select>
+
                                 <div>
-                                    <label for="nama_ruangan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ruangan</label>
-                                    <input type="text" name="nama_ruangan" id="nama_ruangan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
+                                    <label for="jam_masuk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam Masuk</label>
+                                    <input type="time" name="tanggal_mulai" id="tanggal_mulai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
                                 </div>
                                 <div>
-                                    <label for="kapasitas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kapasitas</label>
-                                    <input type="number" name="kapasitas" id="kapasitas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
+                                    <label for="jam_keluar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam Keluar</label>
+                                    <input type="time" name="tanggal_selesai" id="tanggal_selesai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
                                 </div>
+
                                 <div>
-                                    <label for="fasilitas" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Fasilitas</label>
-                                    <input type="text" name="fasilitas" id="fasilitas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
+                                    <label for="jam_keluar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam Keluar</label>
+                                    <input type="time" name="tanggal_selesai" id="tanggal_selesai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" required="">
                                 </div>
                             </div>
 
@@ -247,52 +290,80 @@
                     </form>
                 </div>
             </div>
-        </div> --}}
-
-    <script>
-        // Fungsi untuk memfilter data berdasarkan input pencarian
-        function searchData() {
-        const searchInput = document.getElementById('simple-search').value.toLowerCase();
-        const dataContainer = document.getElementById('data-container');
-        const rows = dataContainer.getElementsByTagName('tr');
-
-        for (let i = 0; i < rows.length; i++) {
-            const cells = rows[i].getElementsByTagName('td');
-            let found = false;
-
-            for (let j = 0; j < cells.length; j++) {
-                if (cells[j]) {
-                    const cellText = cells[j].textContent || cells[j].innerText;
-                    if (cellText.toLowerCase().includes(searchInput)) {
-                        found = true;
-                        break;
-                    }
-                }
-            }
-
-            if (found) {
-                rows[i].style.display = '';
-            } else {
-                rows[i].style.display = 'none';
-            }
-            }
-        }
-
-        document.getElementById('simple-search').addEventListener('input', searchData);
-
-        searchData();
+        </div>
 
 
-        document.addEventListener("DOMContentLoaded", function(event) {
-        document.getElementById('defaultModalButton').click();
-        });
+
+        <script>
+            // Fungsi untuk memfilter data berdasarkan input pencarian
+            // function searchData() {
+            // const searchInput = document.getElementById('simple-search').value.toLowerCase();
+            // const dataContainer = document.getElementById('data-container');
+            // const rows = dataContainer.getElementsByTagName('tr');
+
+            // for (let i = 0; i < rows.length; i++) {
+            //     const cells = rows[i].getElementsByTagName('td');
+            //     let found = false;
+
+            //     for (let j = 0; j < cells.length; j++) {
+            //         if (cells[j]) {
+            //             const cellText = cells[j].textContent || cells[j].innerText;
+            //             if (cellText.toLowerCase().includes(searchInput)) {
+            //                 found = true;
+            //                 break;
+            //             }
+            //         }
+            //     }
+
+            //     if (found) {
+            //         rows[i].style.display = '';
+            //     } else {
+            //         rows[i].style.display = 'none';
+            //     }
+            //     }
+            // }
+
+            // document.getElementById('simple-search').addEventListener('input', searchData);
+
+            // searchData();
 
 
-    </script>
+            // document.addEventListener("DOMContentLoaded", function(event) {
+            // document.getElementById('defaultModalButton').click();
+            // });
+
+            $(document).ready(function() {
+                    $('.js-example-basic-multiple').select2();
+                });
+
+
+
+            // $('#nama_matakuliah').change(function() {
+            //     const selectedIds = $(this).val(); // ini akan berupa array
+            //     let dosenNames = [];
+            //     let dosenIds = [];
+
+            //     if(selectedIds && selectedIds.length > 0) {
+            //         selectedIds.forEach(id => {
+            //             const selectedPemetaan = pemetaanData.find(item => item.id == id);
+            //             if(selectedPemetaan) {
+            //                 dosenNames.push(selectedPemetaan.dosen);
+            //                 dosenIds.push(selectedPemetaan.dosen_id);
+            //             }
+            //         });
+            //         $('#dosen').val(dosenNames.join(', '));
+            //         $('#dosen_id').val(dosenIds.join(','));
+            //     } else {
+            //         $('#dosen').val('');
+            //         $('#dosen_id').val('');
+            //     }
+            // });
+        </script>
+
 
         </div>
         <!-- Filter modal -->
-        <form action="#" method="get" id="filterModal" tabindex="-1" aria-hidden="true" class="fixed left-0 right-0 top-0 z-50 hidden h-modal w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full">
+        {{-- <form action="#" method="get" id="filterModal" tabindex="-1" aria-hidden="true" class="fixed left-0 right-0 top-0 z-50 hidden h-modal w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full">
           <div class="relative h-full w-full max-w-xl md:h-auto">
             <!-- Modal content -->
             <div class="relative rounded-lg bg-white shadow dark:bg-gray-800">
@@ -901,7 +972,8 @@
               </div>
             </div>
           </div>
-        </form>
+        </form> --}}
+
 
       </section>
 

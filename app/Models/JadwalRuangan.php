@@ -12,6 +12,8 @@ class JadwalRuangan extends Model
     use HasFactory, Notifiable;
 
     protected $fillable = [
+        'pemetaan_id',
+        'ruangan_id',
         'jam_masuk',
         'jam_keluar',
         'hari'
@@ -20,11 +22,11 @@ class JadwalRuangan extends Model
 
     public function pemetaan(): BelongsTo
     {
-        return $this->belongsTo(Pemetaan::class);
+        return $this->belongsTo(Pemetaan::class, 'pemetaan_id');
     }
 
     public function ruangan(): BelongsTo
     {
-        return $this->belongsTo(Ruangan::class);
+        return $this->belongsTo(Ruangan::class, 'ruangan_id');
     }
 }

@@ -9,13 +9,12 @@ use Illuminate\Http\Request;
 
 class JadwalRuanganController extends Controller
 {
-
     public function index()
 {
     $datas = JadwalRuangan::with(['ruangan', 'pemetaan'])->get();
-    $pemetaan = Pemetaan::all();
+    $pemetaan = Pemetaan::with(['mata_kuliah', 'dosen'])->get();
     $ruangan = Ruangan::all();
-    return view('jadwal_ruangan.index', compact('datas', 'ruangan', 'pemetaan'));
+    return view('jadwal_ruangan.index', compact('datas', 'pemetaan', 'ruangan'));
 }
 
     public function store(Request $request)
@@ -23,8 +22,10 @@ class JadwalRuanganController extends Controller
         // Validasi data
         $validated = $request->validate([
 
-            'jam_masuk' => 'required|time',
-            'jam_keluar' => 'required|time',
+            'pemetaan_id' => 'required|exists:pemetaans,id',
+            'ruangan_id' => 'required|exists:ruangans,id',
+            'jam_masuk' => 'required',
+            'jam_keluar' => 'required',
             'hari' => 'required',
         ]);
 
@@ -39,14 +40,15 @@ public function update(Request $request, string $id)
     $datas = JadwalRuangan::findOrFail($id);
 
     $request->validate([
-            'jam_masuk' => 'required|time',
-            'jam_keluar' => 'required|time',
+            'pemetaan_id' => 'required|exists:pemetaans,id',
+            'ruangan_id' => 'required|exists:ruangans,id',
+            'jam_masuk' => 'required',
+            'jam_keluar' => 'required',
             'hari' => 'required',
-
     ]);
 
     $datas->update($request->all());
-    return redirect(route('jadwal_ruangan.index'))->with('success', 'Data Pemetaan berhasil diperbarui.');
+    return redirect(route('jadwal_ruangan.index'))->with('success', 'Data JadwalRuangan berhasil diperbarui.');
 }
 
 
@@ -60,4 +62,5 @@ public function destroy($id){
     $datas->delete();
     return redirect('/jadwal_ruangan')->with('success', 'Berhasil Dihapus');
 }
+
 }
