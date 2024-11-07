@@ -25,7 +25,7 @@ class DosenController extends Controller
         $validated = $request->validate([
 
             'NIP' => 'required|unique:dosens,NIP',
-            'Nama' => 'required|string|max:100' 
+            'Nama' => 'required|string|max:100'
 
         ]);
 
@@ -73,6 +73,7 @@ class DosenController extends Controller
     }
 
 }
+
 
 
 

@@ -66,4 +66,13 @@ public function destroy($id){
     return redirect('/jadwal_ruangan')->with('success', 'Berhasil Dihapus');
 }
 
+public function show($hari)
+{
+    // Ambil data jadwal berdasarkan hari
+    $datas = JadwalRuangan::where('hari', $hari)->get();
+
+    // Tampilkan view dengan data jadwal yang sesuai
+    return view('jadwal_ruangan.index', compact('datas', 'hari'));
+}
+
 }

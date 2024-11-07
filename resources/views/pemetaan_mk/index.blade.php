@@ -99,15 +99,15 @@
                                                 @method('PUT')
 
                                                 <div class="grid gap-4 mb-7 sm:grid-cols-1">
-                                                    <label for="nama_matakuliah" class="block  text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
-                                                    <select name="matakuliah_id" id="nama_matakuliah" class="js-example-basic-single bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="state"  >
+                                                    <label for="nama_matakuliah-{{$data->id}}" class="block  text-sm font-medium text-gray-900 dark:text-white">Mata Kuliah</label>
+                                                    <select name="matakuliah_id" id="nama_matakuliah-{{$data->id}}" class="js-example-basic-single bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="state"  >
                                                         <option value="{{  $data->id }}">{{ old('nama_matakuliah', $data->mata_kuliah->nama_matakuliah) }}</option>
                                                         @foreach ($matakuliah as $item)
                                                             <option value="{{  $item->id }}">{{ old('nama_matakuliah', $item->nama_matakuliah) }}</option>
                                                         @endforeach
                                                     </select>
-                                                    <label for="Nama" class="block  text-sm font-medium text-gray-900 dark:text-white">Dosen</label>
-                                                    <select name="dosen_id" id="Nama" class="js-example-basic-single bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="state" >
+                                                    <label for="Nama-{{$data->id}}" class="block  text-sm font-medium text-gray-900 dark:text-white">Dosen</label>
+                                                    <select name="dosen_id" id="Nama-{{$data->id}}" class="js-example-basic-single bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" name="state" >
                                                         <option value="{{  $data->id }}">{{ old('Nama', $data->dosen->Nama) }}</option>
                                                         @foreach ($dosen as $item)
                                                             <option value="{{  $item->id }}">{{ old('Nama', $item->Nama) }}</option>

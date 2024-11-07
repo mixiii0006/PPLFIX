@@ -82,7 +82,7 @@
           </svg>
         </button> --}}
         <!-- Notifications -->
-        <button
+        {{-- <button
           type="button"
           data-dropdown-toggle="notification-dropdown"
           class="p-2 mr-1 text-gray-500 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -585,7 +585,8 @@
               </div>
             </a>
           </div>
-        </div>
+        </div> --}}
+
         <button
           type="button"
           class="flex mx-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
@@ -596,13 +597,13 @@
           <span class="sr-only">Open user menu</span>
           <img
             class="w-8 h-8 rounded-full"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/michael-gough.png"
+            src="/images/user.png"
             alt="user photo"
           />
         </button>
         <!-- Dropdown menu -->
         <div
-          class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
+          class="hidden z-50 my-4 w-56 text-base list-none bg-white  divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600 rounded-xl"
           id="dropdown"
         >
           <div class="py-3 px-4">
@@ -616,18 +617,9 @@
             >
           </div>
 
-          {{-- @foreach ($datas as $data)
-        <div class="py-3 px-4">
-            <span class="block text-sm font-semibold text-gray-900 dark:text-white">
-                {{ $data->name }}
-            </span>
-            <span class="block text-sm text-gray-900 truncate dark:text-white">
-                {{ $data->email }}
-            </span>
-        </div>
-        @endforeach --}}
 
-          <ul
+
+          {{-- <ul
             class="py-1 text-gray-700 dark:text-gray-300"
             aria-labelledby="dropdown"
           >
@@ -645,12 +637,13 @@
                 >Account settings</a
               >
             </li>
-          </ul>
+          </ul> --}}
+
           <ul
             class="py-1 text-gray-700 dark:text-gray-300"
             aria-labelledby="dropdown"
           >
-            <li>
+            {{-- <li>
               <a
                 href="#"
                 class="flex items-center py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -726,13 +719,12 @@
           <ul
             class="py-1 text-gray-700 dark:text-gray-300"
             aria-labelledby="dropdown"
-          >
+          > --}}
             <li>
-              <a
-                href="#"
-                class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                >Sign out</a
-              >
+                <form action="{{ route('logout') }}" method="POST" class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                    @csrf
+                    <button type="submit">Sign Out</button>
+                </form>
             </li>
           </ul>
         </div>
