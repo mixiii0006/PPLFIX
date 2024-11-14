@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataDiriController;
 use App\Http\Controllers\DataRuanganController;
 use App\Http\Controllers\DosenController;
@@ -28,6 +30,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Route::middleware('roles:admin,operator,user')->group(function () {
+//     Route::resource('dashboard', DashboardController::class);
+// });
+
+
 Route::middleware('roles:admin')->group(function () {
     Route::resource('data_diri', DataDiriController::class);
 });
@@ -51,6 +58,8 @@ Route::middleware('roles:admin,operator')->group(function () {
 Route::middleware('roles:admin,operator,user')->group(function () {
     Route::resource('jadwal_ruangan', JadwalRuanganController::class);
 });
+
+Route::get('/filter-jadwal', [JadwalRuanganController::class, 'filterJadwal'])->name('filter.jadwal');
 
 
 

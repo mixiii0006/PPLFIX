@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DataDiriController extends Controller
 {
     public function index()
     {
         $datas = User::all();
-        return view('data_diri.index', compact('datas'));
+        return view('data_diri.index', 
+         compact('datas'));
     }
 
 

@@ -22,26 +22,28 @@
                 </div>
                 </ol>
               </nav>
+              
 
               <div class="inline-flex flex-col w-full rounded-md shadow-sm md:w-auto md:flex-row" role="group">
+                
                 <div class="inline-flex flex-col w-full rounded-md shadow-sm md:w-auto md:flex-row" role="group">
-                    <a href="{{ route('jadwal_ruangan.show', 'Senin') }}" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-t-lg md:rounded-tr-none md:rounded-l-lg hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-primary-500 dark:focus:text-white">
-                      Senin
+                    <a href="{{ route('jadwal_ruangan.index') }}" class="px-4 py-2 text-sm font-medium text-white bg-blue-500 border border-blue-500 rounded-t-lg md:rounded-tr-none md:rounded-l-lg hover:bg-blue-600 hover:border-blue-600 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:text-white dark:bg-blue-700 dark:border-blue-600 dark:hover:bg-blue-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                        Semua
                     </a>
-                    <a href="{{ route('jadwal_ruangan.show', 'Selasa') }}" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-gray-200 border-x md:border-x-0 md:border-t md:border-b hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-primary-500 dark:focus:text-white">
-                      Selasa
-                    </a>
-                    <a href="{{ route('jadwal_ruangan.show', 'Rabu') }}" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-gray-200 border-x md:border-x-0 md:border-l md:border-b hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-primary-500 dark:focus:text-white">
-                      Rabu
-                    </a>
-                    <a href="{{ route('jadwal_ruangan.show', 'Kamis') }}" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-gray-200 border-x md:border-x-0 md:border-l md:border-b hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-primary-500 dark:focus:text-white">
-                      Kamis
-                    </a>
-                    <a href="{{ route('jadwal_ruangan.show', 'Jumat') }}" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-b-lg md:rounded-bl-none md:rounded-r-lg hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-primary-500 dark:focus:text-white">
-                      Jumat
-                    </a>
-                  </div>
+                    @php
+                        $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'];
+                    @endphp
 
+                    @foreach ($days as $day)
+                        <a href="{{ route('jadwal_ruangan.show', $day) }}"
+                        class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-2 focus:ring-primary-700 focus:text-primary-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-primary-500 dark:focus:text-white
+                        {{ $day === $day ? 'bg-primary-700 text-gray-900 dark:text-white' : '' }}
+                        {{-- {{ $loop->first ? 'rounded-t-lg md:rounded-tr-none md:rounded-l-lg' : '' }} --}}
+                        {{ $loop->last ? 'rounded-b-lg md:rounded-bl-none md:rounded-r-lg' : '' }}">
+                            {{ $day }}
+                        </a>
+                    @endforeach
+                  </div>
               </div>
             </div>
 
@@ -55,8 +57,7 @@
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7" />
                 </svg>
               </button>
-
-              {{-- <button data-modal-toggle="filterModal" data-modal-target="filterModal" type="button" class="flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700 sm:w-auto">
+              <button data-modal-toggle="filterModal" data-modal-target="filterModal" type="button" class="flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700 sm:w-auto">
                 <svg class="-ms-0.5 me-2 h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                   <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M18.796 4H5.204a1 1 0 0 0-.753 1.659l5.302 6.058a1 1 0 0 1 .247.659v4.874a.5.5 0 0 0 .2.4l3 2.25a.5.5 0 0 0 .8-.4v-7.124a1 1 0 0 1 .247-.659l5.302-6.059c.566-.646.106-1.658-.753-1.658Z" />
                 </svg>
@@ -65,38 +66,6 @@
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7" />
                 </svg>
               </button>
-              <button id="sortDropdownButton1" data-dropdown-toggle="dropdownSort1" type="button" class="flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white dark:focus:ring-gray-700 sm:w-auto">
-                <svg class="-ms-0.5 me-2 h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M7 4l3 3M7 4 4 7m9-3h6l-6 6h6m-6.5 10 3.5-7 3.5 7M14 18h4" />
-                </svg>
-                Sort
-                <svg class="-me-0.5 ms-2 h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7" />
-                </svg>
-              </button>
-              <div id="dropdownSort1" class="z-50 hidden w-40 divide-y divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700" data-popper-placement="bottom">
-                <ul class="p-2 text-left text-sm font-medium text-gray-500 dark:text-gray-400" aria-labelledby="sortDropdownButton">
-                  <li>
-                    <a href="#" class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"> The most popular </a>
-                  </li>
-                  <li>
-                    <a href="#" class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"> Newest </a>
-                  </li>
-                  <li>
-                    <a href="#" class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"> Increasing price </a>
-                  </li>
-                  <li>
-                    <a href="#" class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"> Decreasing price </a>
-                  </li>
-                  <li>
-                    <a href="#" class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"> No. reviews </a>
-                  </li>
-                  <li>
-                    <a href="#" class="group inline-flex w-full items-center rounded-md px-3 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"> Discount % </a>
-                  </li>
-                </ul>
-              </div> --}}
-
             </div>
           </div>
 
@@ -165,11 +134,10 @@
                     </div>
                   </div>
 
-                  <button type="button" class="inline-flex items-center  border border-blue-500 rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-blue-500 hover:bg-primary-800 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                  <button type="button" id="{{$data->id}}-readProductButton" data-modal-target="{{$data->id}}-readProductModal" data-modal-toggle="{{$data->id}}-readProductModal" class="inline-flex items-center  border border-blue-500 rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-blue-500 hover:bg-primary-800 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                     Detail
                   </button>
                 </div>
-
               </div>
 
             <x-hapus :id="$data->id" :route="route('jadwal_ruangan.destroy', $data->id)"/>
@@ -234,7 +202,7 @@
                                 </div>
                                 <div class="flex items-center space-x-4">
                                     <button id='{{$data->id}}-update' type="submit" class="text-blue-500 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-8 py-2.5 text-center border border-blue-500 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                        Update
+                                        Selesai
                                     </button>
 
                                 </div>
@@ -242,8 +210,80 @@
                         </div>
                     </div>
                 </div>
-            <script>   document.addEventListener("DOMContentLoaded", function(event) {
+
+                <div id="{{$data->id}}-readProductModal" tabindex="-1" aria-hidden="true" class="hidden  bg-gray-500 bg-opacity-25  overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
+                    <div class="relative p-4 w-full max-w-xl h-full md:h-auto">
+                        <!-- Modal content -->
+                        <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
+                                <!-- Modal header -->
+                                <div class="flex justify-between border-b dark:border-gray-600 rounded-t mb-3 ">
+                                    <div class="text-center mb-4">
+                                        <a href="#" class="text-lg font-bold text-blue-500 leading-tight">Jadwal</a>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="{{$data->id}}-readProductModal">
+                                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                            <span class="sr-only">Close modal</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between mb-4 rounded-t sm:mb-5">
+                                    <table>
+                                        <tr>
+                                            <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Ruangan</a></td>
+                                            <td class="pr-2 text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">:</td>
+                                            <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">{{ $data->ruangan->nama_ruangan }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Matakuliah</a></td>
+                                            <td class="pr-2">:</td>
+                                            <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">{{ $data->pemetaan->mata_kuliah->nama_matakuliah }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Dosen</a></td>
+                                            <td class="pr-2">:</td>
+                                            <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">{{ $data->pemetaan->dosen->Nama }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Tanggal Mulai - Selesai</a></td>
+                                            <td class="pr-2">:</td>
+                                            <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">{{ $data->pemetaan->tanggal_mulai }} s.d. {{ $data->pemetaan->tanggal_selesai }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Jam</a></td>
+                                            <td class="pr-2">:</td>
+                                            <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">{{ $data->jam_masuk }} s.d. {{ $data->jam_keluar }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Hari</a></td>
+                                            <td class="pr-2">:</td>
+                                            <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">{{ $data->hari }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Kapasitas Ruangan</a></td>
+                                            <td class="pr-2 text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">:</td>
+                                            <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">{{ $data->ruangan->kapasitas }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="pr-4"><a href="#" class="text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Fasilitas Ruangan</a></td>
+                                            <td class="pr-2 text-sm font-semibold leading-tight text-gray-900 hover:underline dark:text-white">:</td>
+                                            <td class="text-sm font-normal leading-tight text-gray-900 hover:underline dark:text-white">{{ $data->ruangan->fasilitas }}</td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            <script>
+                    document.addEventListener("DOMContentLoaded", function(event) {
                     document.getElementById('{{$data->id}}-editButton ').click();
+                    });
+
+                    document.addEventListener("DOMContentLoaded", function(event) {
+                    document.getElementById('{{$data->id}}-readProductButton').click();
                     });
             </script>
           @endforeach
@@ -321,45 +361,93 @@
             </div>
         </div>
 
+        <form action="{{ route('filter.jadwal') }}" method="get" id="filterModal" tabindex="-1" aria-hidden="true" class="fixed bg-gray-500 bg-opacity-25  left-0 right-0 top-0 z-50 hidden h-modal w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0 md:h-full">
+            <div class="relative h-full w-full max-w-xl md:h-auto">
+              <!-- Modal content -->
+              <div class="relative rounded-lg bg-white shadow dark:bg-gray-800">
+                <!-- Modal header -->
+                <div class="flex items-start justify-between rounded-t pt-5 px-5 pb-3 ">
+                    <h3 class="text-lg font-bold  text-center text-blue-500 dark:text-blue-500">
+                        Filters
+                    </h3>
+                  <button type="button" class="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="filterModal">
+                    <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                  </button>
+                </div>
+                <!-- Modal body -->
+                <div class="px-4 md:px-5">
+                  <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+                    
+                  </div>
+                  <div id="myTabContent">
+                    <div class="grid grid-cols-2 gap-4 md:grid-cols-3" id="brand" role="tabpanel" aria-labelledby="brand-tab">
+                      <div class="space-y-2">
+                        <h5 class="text-sm font-medium uppercase text-black dark:text-white">RK</h5>
+                        @foreach ($ruangan as $data)
+                            @if (str_starts_with($data->nama_ruangan, 'RK'))
+                                <div class="flex items-center">
+                                    <input id="checkbbox_{{ $data->id }}" type="checkbox" name="ruangan_ids[]" value="{{ $data->id }}" class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600" />
+                                    <label for="checkbbox_{{ $data->id }}" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                        {{ $data->nama_ruangan }}
+                                    </label>
+                                </div>
+                            @endif
+                        @endforeach
+                      </div>
+
+                      <div class="space-y-2">
+                        <h5 class="text-sm font-medium uppercase text-black dark:text-white">RD</h5>
+
+                        @foreach ($ruangan as $data)
+                            @if (str_starts_with($data->nama_ruangan, 'RD'))
+                                <div class="flex items-center">
+                                    <input id="checkbbox_{{ $data->id }}" type="checkbox" name="ruangan_ids[]" value="{{ $data->id }}" class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600" />
+                                    <label for="checkbbox_{{ $data->id }}" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                        {{ $data->nama_ruangan }}
+                                    </label>
+                                </div>
+                            @endif
+                        @endforeach
+
+                    </div>
+                    <div class="space-y-2">
+                        <h5 class="text-sm font-medium uppercase text-black dark:text-white">Seminar</h5>
+
+                        @foreach ($ruangan as $data)
+                            @if (str_starts_with($data->nama_ruangan, 'Seminar'))
+                                <div class="flex items-center">
+                                    <input id="checkbbox_{{ $data->id }}" type="checkbox" name="ruangan_ids[]" value="{{ $data->id }}" class="h-4 w-4 rounded border-gray-300 bg-gray-100 text-primary-600 focus:ring-2 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-primary-600" />
+                                    <label for="checkbbox_{{ $data->id }}" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                        {{ $data->nama_ruangan }}
+                                    </label>
+                                </div>
+                            @endif
+                        @endforeach
+                      </div>
+                      <div class="mb-4">
+                        <label for="hari" class="text-sm font-medium text-gray-900 dark:text-gray-300">Pilih Hari:</label>
+                        <select name="hari" id="hari" class="w-full mt-2 px-4 py-2 border border-gray-300 rounded">
+                            <option value="">Semua Hari</option>
+                            @foreach ($days as $day)
+                                <option value="{{ $day }}">{{ $day }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                  
+                <button type="submit" class="rounded-lg border  mt-6 mb-6  border-blue-500 bg-primary-700 px-5 py-2.5 text-center text-sm font-medium text-blue-500 dark:text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-700 dark:hover:bg-primary-800 dark:focus:ring-primary-800">Filter</button>
+                    
+                <!-- Modal footer -->
+                
+              </div>
+            </div>
+        </form>
 
 
         <script>
-            // Fungsi untuk memfilter data berdasarkan input pencarian
-            // function searchData() {
-            // const searchInput = document.getElementById('simple-search').value.toLowerCase();
-            // const dataContainer = document.getElementById('data-container');
-            // const rows = dataContainer.getElementsByTagName('tr');
-
-            // for (let i = 0; i < rows.length; i++) {
-            //     const cells = rows[i].getElementsByTagName('td');
-            //     let found = false;
-
-            //     for (let j = 0; j < cells.length; j++) {
-            //         if (cells[j]) {
-            //             const cellText = cells[j].textContent || cells[j].innerText;
-            //             if (cellText.toLowerCase().includes(searchInput)) {
-            //                 found = true;
-            //                 break;
-            //             }
-            //         }
-            //     }
-
-            //     if (found) {
-            //         rows[i].style.display = '';
-            //     } else {
-            //         rows[i].style.display = 'none';
-            //     }
-            //     }
-            // }
-
-            // document.getElementById('simple-search').addEventListener('input', searchData);
-
-            // searchData();
-
-
-            // document.addEventListener("DOMContentLoaded", function(event) {
-            // document.getElementById('defaultModalButton').click();
-            // });
 
             $(document).ready(function() {
                     $('.js-example-basic-multiple').select2();
@@ -369,7 +457,7 @@
 
 
         </div>
-     
+
 
       </section>
 

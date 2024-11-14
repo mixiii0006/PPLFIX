@@ -2,7 +2,7 @@
 <x-app-layout>
 
     <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 ">
-
+        <h2 class="mb-8 text-3xl tracking-tight font-extrabold text-blue-500 dark:text-blue-500">Data Pengguna</h2>
             <!-- Start coding here -->
             <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                 <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
@@ -21,6 +21,7 @@
                     </div>
                 </div>
                 <div  class="overflow-x-auto">
+
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
@@ -50,9 +51,7 @@
                                     </button>
                                     <div id="{{$data->id}}-dropdown" class="hidden z-10 w-43 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                                         <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="{{$data->id}}-dropdown-button">
-                                            <li>
-                                                <a href="#" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Show</a>
-                                            </li>
+
                                             <li>
                                                 <a  id='{{$data->id}}-editButton' data-modal-target="{{$data->id}}-updateProductModal" data-modal-toggle="{{$data->id}}-updateProductModal" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
 
@@ -61,7 +60,7 @@
 
                                         <div class="" >
                                                 <button id='{{$data->id}}-deleteButton'  data-modal-target="{{$data->id}}-deleteModal" data-modal-toggle="{{$data->id}}-deleteModal"  type="button" class="block py-2 text-end px-16  text-gray-700 hover:bg-red-600 dark:hover:bg-red-600 rounded-sm dark:text-gray-200 dark:hover:text-white">
-                                                     Delete
+                                                     Hapus
                                                 </button>
                                         </div>
                                 </td>
@@ -113,7 +112,7 @@
                                                 </div>
                                                 <div class="flex items-center space-x-4">
                                                     <button id='{{$data->id}}-update' type="submit" class="text-blue-500 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-8 py-2.5 text-center border border-blue-500 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                                        Update
+                                                        Selesai
                                                     </button>
 
                                                 </div>
@@ -131,11 +130,12 @@
                         </tbody>
                     </table>
                 </div>
+
                 <nav class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation"></nav>
             </div>
 
         <script>
-           
+
             function searchData() {
             const searchInput = document.getElementById('simple-search').value.toLowerCase();
             const dataContainer = document.getElementById('data-container');

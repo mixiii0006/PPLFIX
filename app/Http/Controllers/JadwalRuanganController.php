@@ -15,9 +15,10 @@ class JadwalRuanganController extends Controller
     $pemetaan = Pemetaan::with(['mata_kuliah', 'dosen'])->get();
 
     // dd($pemetaan);
+    $jadwal = JadwalRuangan::all();
 
     $ruangan = Ruangan::all();
-    return view('jadwal_ruangan.index', compact('datas', 'pemetaan', 'ruangan'));
+    return view('jadwal_ruangan.index', compact('datas','jadwal', 'pemetaan', 'ruangan'));
 }
 
     public function store(Request $request)
@@ -66,13 +67,54 @@ public function destroy($id){
     return redirect('/jadwal_ruangan')->with('success', 'Berhasil Dihapus');
 }
 
-public function show($hari)
+public function show($day)
 {
     // Ambil data jadwal berdasarkan hari
-    $datas = JadwalRuangan::where('hari', $hari)->get();
+    $datas = JadwalRuangan::where('hari', $day)->get();
+    $pemetaan = Pemetaan::with(['mata_kuliah', 'dosen'])->get();
+
+
+    $ruangan = Ruangan::all();
 
     // Tampilkan view dengan data jadwal yang sesuai
-    return view('jadwal_ruangan.index', compact('datas', 'hari'));
+    return view('jadwal_ruangan.index', compact('datas', 'day','pemetaan', 'ruangan'));
 }
+public function filterJadwal(Request $request)
+{
+    // Ambil ID ruangan yang dipilih dari request
+    $selectedRuanganIds = $request->input('ruangan_ids', []);
+    
+    // Ambil hari yang dipilih dari request
+    $selectedDay = $request->input('hari', null);
+    
+    // Mulai query untuk mengambil data jadwal
+    $query = JadwalRuangan::query();
+    
+    // Filter berdasarkan ID ruangan yang dipilih jika ada
+    if (!empty($selectedRuanganIds)) {
+        $query->whereIn('ruangan_id', $selectedRuanganIds);
+    }
+
+    // Filter berdasarkan hari yang dipilih jika ada
+    if ($selectedDay) {
+        $query->where('hari', $selectedDay);
+    }
+
+    // Ambil data jadwal yang sudah difilter
+    $datas = $query->get();
+    
+    // Ambil daftar ruangan untuk form filter
+    $ruangan = Ruangan::all();
+    
+    // Ambil daftar hari yang tersedia (untuk filter hari)
+    $days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'];
+   
+    // Ambil data pemetaan untuk mata kuliah dan dosen
+    $pemetaan = Pemetaan::with(['mata_kuliah', 'dosen'])->get();
+
+    // Kembalikan view dengan data jadwal yang sudah difilter
+    return view('jadwal_ruangan.index', compact('ruangan', 'datas', 'pemetaan', 'days'));
+}
+
 
 }

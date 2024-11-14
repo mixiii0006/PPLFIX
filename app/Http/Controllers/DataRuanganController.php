@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ruangan;
 use Illuminate\Http\Request;
 
+
 class DataRuanganController extends Controller
 {
     public function index()

@@ -96,7 +96,7 @@
 
                 </div>
             </div>
-          </section>
+        </section>
    </x-app-layout>
 
 
