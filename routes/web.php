@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataDiriController;
 use App\Http\Controllers\DataRuanganController;
 use App\Http\Controllers\DosenController;

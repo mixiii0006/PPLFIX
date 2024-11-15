@@ -22,10 +22,10 @@
                 </div>
                 </ol>
               </nav>
-              
+
 
               <div class="inline-flex flex-col w-full rounded-md shadow-sm md:w-auto md:flex-row" role="group">
-                
+
                 <div class="inline-flex flex-col w-full rounded-md shadow-sm md:w-auto md:flex-row" role="group">
                     <a href="{{ route('jadwal_ruangan.index') }}" class="px-4 py-2 text-sm font-medium text-white bg-blue-500 border border-blue-500 rounded-t-lg md:rounded-tr-none md:rounded-l-lg hover:bg-blue-600 hover:border-blue-600 focus:z-10 focus:ring-2 focus:ring-blue-500 focus:text-white dark:bg-blue-700 dark:border-blue-600 dark:hover:bg-blue-600 dark:focus:ring-blue-500 dark:focus:text-white">
                         Semua
@@ -190,7 +190,7 @@
                                     <label for="jam_keluar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jam Keluar</label>
                                     <input type="time" name="jam_keluar" id="jam_keluar" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ old('jam_keluar', $data->jam_keluar) }}" required="">
                                 </div>
-                                    <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
+                                    <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Hari</label>
                                     <select id="category" name="hari" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                         <option selected="hari">{{ old('hari', $data->hari)}}</option>
                                         <option value="Senin">Senin</option>
@@ -380,7 +380,7 @@
                 <!-- Modal body -->
                 <div class="px-4 md:px-5">
                   <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
-                    
+
                   </div>
                   <div id="myTabContent">
                     <div class="grid grid-cols-2 gap-4 md:grid-cols-3" id="brand" role="tabpanel" aria-labelledby="brand-tab">
@@ -437,11 +437,11 @@
                         </select>
                     </div>
                 </div>
-                  
+
                 <button type="submit" class="rounded-lg border  mt-6 mb-6  border-blue-500 bg-primary-700 px-5 py-2.5 text-center text-sm font-medium text-blue-500 dark:text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-700 dark:hover:bg-primary-800 dark:focus:ring-primary-800">Filter</button>
-                    
+
                 <!-- Modal footer -->
-                
+
               </div>
             </div>
         </form>

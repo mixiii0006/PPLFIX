@@ -11,7 +11,7 @@ use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
-    
+
 
     public function run()
     {
@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $dosens = [
             [
                 'NIP' => 198711032014042001,
-                'NIDN' => 0003118701,
+                'NIDN' => "0003118701",
                 'Nama' => 'dr. Novriantika Lestari, M.Biomed.',
                 'TTL' => 'Curup, 03-Nov-87',
                 'CPNS' => '01-Apr-14',
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'NIP' => 198312252009121007,
-                'NIDN' => 0025128301                ,
+                'NIDN' => "0025128301",
                 'Nama' => 'dr. Zayadi Zainuddin, M.Pd.Ked., Sp.KFR',
                 'TTL' => 'Rejang Lebong, 25-Dec-83',
                 'CPNS' => '01-Dec-09',
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-           
+
 
         ];
 

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('dosens', function (Blueprint $table) {
             $table->id(); // Auto-incrementing primary key
             $table->integer('NIP')->unique(); // Assuming NIP is unique
-            $table->integer('NIDN')->nullable();
+            $table->string('NIDN')->nullable();
             $table->string('Nama', 100); // Adjust length if needed
             $table->string('TTL')->nullable(); // Assuming it's a date field
             $table->string('CPNS')->nullable(); // Date of first employment
